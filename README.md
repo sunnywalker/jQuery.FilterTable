@@ -14,7 +14,7 @@ Include the dependencies:
 <script src="/path/to/jquery.js"></script>
 <script src="/path/to/bindWithDelay.js"></script> <!-- optional -->
 <script src="/path/to/jquery.filtertable.js"></script>
-<style>.table-filter .quick { margin-left: 0.5em; font-size: 0.8em; text-decoration: none; }</style> <!-- or put the styling in your stylesheet -->
+<style>.filter-table .quick { margin-left: 0.5em; font-size: 0.8em; text-decoration: none; }</style> <!-- or put the styling in your stylesheet -->
 ```
 
 Then apply `filterTable()` to your table(s):
@@ -30,8 +30,9 @@ $('table').filterTable(); //if this code appears after your tables; otherwise, i
 | Option | Type | Default | Description |
 | ------ | ---- | ------- | ----------- |
 | `hideTFootOnFilter` | boolean | false | Controls whether the table's tfoot(s) will be hidden when the table is filtered |
-| `containerClass` | string | table-filter | Class applied to the main filter input container |
+| `containerClass` | string | filter-table | Class applied to the main filter input container |
 | `containerTag` | string | p | Tag name of the main filter input container |
+| `highlightClass` | string | alt | Class applied to cells containing the filter term |
 | `inputType` | string | search | Tag name of the filter input itself |
 | `label` | string | Filter: | Text to precede the filter input |
 | `minRows` | integer | 8 | Only show the filter on tables with this number of rows or more |
@@ -45,7 +46,8 @@ $('table').filterTable(); //if this code appears after your tables; otherwise, i
 Suggested styling:
 
 ```css
-.table-filter .quick { margin-left: 0.5em; font-size: 0.8em; text-decoration: none; }
+.filter-table .quick { margin-left: 0.5em; font-size: 0.8em; text-decoration: none; }
+td.alt { background-color: #ffe; background-color: rgba(255,255,0,.1); }
 ```
 
 ## Dependencies

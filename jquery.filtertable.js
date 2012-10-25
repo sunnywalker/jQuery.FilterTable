@@ -6,7 +6,7 @@
  *
  * Utilizes bindWithDelay() if available. https://github.com/bgrins/bindWithDelay
  *
- * @version v1.1
+ * @version v1.2
  * @author Sunny Walker, swalker@hawaii.edu
  */
 (function($){
@@ -16,8 +16,9 @@
 	$.fn.filterTable = function(options) {
 		var defaults = {
 				hideTFootOnFilter: false,               //if true, the table's tfoot(s) will be hidden when the table is filtered
-				containerClass:    'table-filter',      //class to apply to the container
+				containerClass:    'filter-table',      //class to apply to the container
 				containerTag:      'p',                 //tag name of the container
+				highlightClass:    'alt',               //class applied to cells containing the filter term
 				inputType:         'search',            //tag name of the filter input tag
 				label:             'Filter:',           //text to precede the filter input tag
 				minRows:           8,                   //don't show the filter on tables with less than this number of rows
@@ -33,12 +34,12 @@
 				var tbody=table.find('tbody');
 				if (q==='') {
 					tbody.find('tr').show().addClass('visible');
-					tbody.find('td').removeClass('alt');
+					tbody.find('td').removeClass(settings.highlightClass);
 					if (settings.hideTFootOnFilter) table.find('tfoot').show(); //show footer when not filtered
 				} else {
 					tbody.find('tr').hide().removeClass('visible').filter(':filterTableFind("'+q.replace(/(['"])/g,'\\$1')+'")').show().addClass('visible');
 					if (settings.hideTFootOnFilter) table.find('tfoot').hide(); //hide footer when filtered
-					tbody.find('td').removeClass('alt').filter(':filterTableFind("'+q.replace(/(['"])/g,'\\$1')+'")').addClass('alt'); //highlight (class=alt) cells with the content
+					tbody.find('td').removeClass(settings.highlightClass).filter(':filterTableFind("'+q.replace(/(['"])/g,'\\$1')+'")').addClass(settings.highlightClass); //highlight (class=alt) cells with the content
 					if (settings.callback) settings.callback(q, table);
 				}
 			};
