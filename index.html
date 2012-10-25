@@ -1,0 +1,167 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>jQuery.FilterTable by sunnywalker</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>jQuery.FilterTable</h1>
+        <p>Live searching/filtering for HTML tables in a jQuery plugin</p>
+        <p class="view"><a href="https://github.com/sunnywalker/jQuery.FilterTable">View the Project on GitHub <small>sunnywalker/jQuery.FilterTable</small></a></p>
+        <ul>
+          <li><a href="https://github.com/sunnywalker/jQuery.FilterTable/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/sunnywalker/jQuery.FilterTable/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/sunnywalker/jQuery.FilterTable">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>jQuery Filter Table Plugin</h1>
+
+<p>This plugin will add a search filter to tables. When typing in the filter, any rows that do not contain the filter will be hidden.</p>
+
+<p>One can also define clickable shortcuts for commonly used terms.</p>
+
+<p>See the demos at http://</p>
+
+<h2>Usage</h2>
+
+<p>Include the dependencies:</p>
+
+<div class="highlight"><pre><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/path/to/jquery.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/path/to/bindWithDelay.js"</span><span class="nt">&gt;&lt;/script&gt;</span> <span class="c">&lt;!-- optional --&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/path/to/jquery.filtertable.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;style&gt;</span><span class="nc">.table-filter</span> <span class="nc">.quick</span> <span class="p">{</span> <span class="k">margin-left</span><span class="o">:</span> <span class="m">0.5em</span><span class="p">;</span> <span class="k">font-size</span><span class="o">:</span> <span class="m">0.8em</span><span class="p">;</span> <span class="k">text-decoration</span><span class="o">:</span> <span class="k">none</span><span class="p">;</span> <span class="p">}</span><span class="nt">&lt;/style&gt;</span> <span class="c">&lt;!-- or put the styling in your stylesheet --&gt;</span>
+</pre></div>
+
+<p>Then apply <code>filterTable()</code> to your table(s):</p>
+
+<div class="highlight"><pre><span class="nt">&lt;script&gt;</span>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'table'</span><span class="p">).</span><span class="nx">filterTable</span><span class="p">();</span> <span class="c1">//if this code appears after your tables; otherwise, include it in your document.ready() code.</span>
+<span class="nt">&lt;/script&gt;</span>
+</pre></div>
+
+<h2>Options</h2>
+
+<table>
+<tr>
+<th>Option</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+<tr>
+<td><code>hideTFootOnFilter</code></td>
+<td>boolean</td>
+<td>false</td>
+<td>Controls whether the table's tfoot(s) will be hidden when the table is filtered</td>
+</tr>
+<tr>
+<td><code>containerClass</code></td>
+<td>string</td>
+<td>table-filter</td>
+<td>Class applied to the main filter input container</td>
+</tr>
+<tr>
+<td><code>containerTag</code></td>
+<td>string</td>
+<td>p</td>
+<td>Tag name of the main filter input container</td>
+</tr>
+<tr>
+<td><code>inputType</code></td>
+<td>string</td>
+<td>search</td>
+<td>Tag name of the filter input itself</td>
+</tr>
+<tr>
+<td><code>label</code></td>
+<td>string</td>
+<td>Filter:</td>
+<td>Text to precede the filter input</td>
+</tr>
+<tr>
+<td><code>minRows</code></td>
+<td>integer</td>
+<td>8</td>
+<td>Only show the filter on tables with this number of rows or more</td>
+</tr>
+<tr>
+<td><code>placeholder</code></td>
+<td>string</td>
+<td>search this table</td>
+<td>HTML5 placeholder text for the filter input</td>
+</tr>
+<tr>
+<td><code>quickList</code></td>
+<td>array</td>
+<td>[]</td>
+<td>List of clickable phrases to quick fill the search</td>
+</tr>
+<tr>
+<td><code>quickListClass</code></td>
+<td>string</td>
+<td>quick</td>
+<td>Class of each quick list item</td>
+</tr>
+<tr>
+<td><code>callback</code></td>
+<td>function(<code>term</code>, <code>table</code>)</td>
+<td><em>null</em></td>
+<td>Callback function after a filter is performed. Parameters: <ul>
+<li>
+<code>term</code> filter term (string)</li>
+<li>
+<code>table</code> table being filtered (jQuery object)</li>
+</ul>
+</td>
+</tr>
+</table><h2>Styling</h2>
+
+<p>Suggested styling:</p>
+
+<div class="highlight"><pre><span class="nc">.table-filter</span> <span class="nc">.quick</span> <span class="p">{</span> <span class="k">margin-left</span><span class="o">:</span> <span class="m">0.5em</span><span class="p">;</span> <span class="k">font-size</span><span class="o">:</span> <span class="m">0.8em</span><span class="p">;</span> <span class="k">text-decoration</span><span class="o">:</span> <span class="k">none</span><span class="p">;</span> <span class="p">}</span>
+</pre></div>
+
+<h2>Dependencies</h2>
+
+<p>Other than jQuery, the plugin will take advantage of <a href="https://github.com/bgrins/bindWithDelay">bindWithDelay</a> if it is available.</p>
+
+<h2>Change Log</h2>
+
+<h3>1.1</h3>
+
+<p>Initial public release.</p>
+
+<h2>License</h2>
+
+<p>(The MIT License)</p>
+
+<p>Copyright (c) 2012 Sunny Walker <a href="mailto:swalker@hawaii.edu">swalker@hawaii.edu</a></p>
+
+<p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
+
+<p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
+
+<p>THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
+      </section>
+    </div>
+    <footer>
+      <p>Project maintained by <a href="https://github.com/sunnywalker">sunnywalker</a></p>
+      <p>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></p>
+    </footer>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
