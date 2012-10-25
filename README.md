@@ -4,22 +4,26 @@ This plugin will add a search filter to tables. When typing in the filter, any r
 
 One can also define clickable shortcuts for commonly used terms.
 
-See the demos at http://
+See the demos at http://sunnywalker.github.com/jQuery.FilterTable
 
 ## Usage
 
 Include the dependencies:
 
-	<script src="/path/to/jquery.js"></script>
-	<script src="/path/to/bindWithDelay.js"></script> <!-- optional -->
-	<script src="/path/to/jquery.filtertable.js"></script>
-	<style>.table-filter .quick { margin-left: 0.5em; font-size: 0.8em; text-decoration: none; }</style> <!-- or put the styling in your stylesheet -->
+```html
+<script src="/path/to/jquery.js"></script>
+<script src="/path/to/bindWithDelay.js"></script> <!-- optional -->
+<script src="/path/to/jquery.filtertable.js"></script>
+<style>.table-filter .quick { margin-left: 0.5em; font-size: 0.8em; text-decoration: none; }</style> <!-- or put the styling in your stylesheet -->
+```
 
 Then apply `filterTable()` to your table(s):
 
-	<script>
-	$('table').filterTable(); //if this code appears after your tables; otherwise, include it in your document.ready() code.
-	</script>
+```html
+<script>
+$('table').filterTable(); //if this code appears after your tables; otherwise, include it in your document.ready() code.
+</script>
+```
 
 ## Options
 
@@ -40,7 +44,9 @@ Then apply `filterTable()` to your table(s):
 
 Suggested styling:
 
-	.table-filter .quick { margin-left: 0.5em; font-size: 0.8em; text-decoration: none; }
+```css
+.table-filter .quick { margin-left: 0.5em; font-size: 0.8em; text-decoration: none; }
+```
 
 ## Dependencies
 
