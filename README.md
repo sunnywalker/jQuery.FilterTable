@@ -16,6 +16,7 @@ Include the dependencies:
 <script src="/path/to/jquery.filtertable.js"></script>
 <style>
 .filter-table .quick { margin-left: 0.5em; font-size: 0.8em; text-decoration: none; }
+.fitler-table .quick:hover { text-decoration: underline; }
 td.alt { background-color: #ffc; background-color: rgba(255, 255, 0, 0.2); }
 </style> <!-- or put the styling in your stylesheet -->
 ```
@@ -50,7 +51,24 @@ Suggested styling:
 
 ```css
 .filter-table .quick { margin-left: 0.5em; font-size: 0.8em; text-decoration: none; }
+.fitler-table .quick:hover { text-decoration: underline; }
 td.alt { background-color: #ffc; background-color: rgba(255, 255, 0, 0.2); }
+```
+
+There is a caveat on automatic row striping. While alternating rows can be striped with CSS, such as:
+
+```css
+tbody td:nth-child(even) { background-color: #f0f8ff; }
+```
+
+Note that CSS cannot differentiate between visible and non-visible rows. To that end, it's better to use jQuery to add and remove a striping class to visible rows by defining a callback function in the options.
+
+```javascript
+$('table').filterTable({
+	callback: function(term, table) {
+		table.find('tr').removeClass('striped').filter(':visible:').addClass('striped');
+	}
+});
 ```
 
 ## Dependencies
@@ -59,9 +77,16 @@ Other than jQuery, the plugin will take advantage of Brian Grinstead's [bindWith
 
 ## Change Log
 
+<h2>Change Log</h2>
+
+### 1.2
+
+- Changed the default container class to `filter-table` from `table-filter` to be consistent with the plugin name.
+- Made the cell highlighting class an option rather than hard-coded.
+
 ### 1.1
 
-Initial public release.
+- Initial public release.
 
 ## License
 
