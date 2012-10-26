@@ -17,12 +17,12 @@
     <script src="https://raw.github.com/sunnywalker/jQuery.FilterTable/master/jquery.filtertable.js"></script>
     <script>
     $(document).ready(function(){
-    	$('table').filterTable({quickList:['string','boolean','class']});
+    	$('table').filterTable({quickList:['class','tag']});
     });
     </script>
     <style>
     .filter-table .quick { margin-left: 0.5em; font-size: 0.8em; text-decoration: none; }
-    td.alt { background-color: #eef; background-color: rgba(0,0,255,.08); }
+    td.alt { background-color: #ffc; background-color: rgba(0,0,255,.2); }
     </style>
   </head>
   <body>
@@ -46,7 +46,7 @@
 
 <h2>Example</h2>
 
-<p>The <a href="#options">Options</a> table below has <code>filterTable()</code> applied to it.</p>
+<p>The <a href="#options">Options</a> table below has <code>filterTable({quickList:['class','tag']})</code> applied to it.</p>
 
 <h2>Usage</h2>
 
@@ -57,7 +57,7 @@
 <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/path/to/jquery.filtertable.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
 <span class="nt">&lt;style&gt;</span>
 <span class="nc">.filter-table</span> <span class="nc">.quick</span> <span class="p">{</span> <span class="k">margin-left</span><span class="o">:</span> <span class="m">0.5em</span><span class="p">;</span> <span class="k">font-size</span><span class="o">:</span> <span class="m">0.8em</span><span class="p">;</span> <span class="k">text-decoration</span><span class="o">:</span> <span class="k">none</span><span class="p">;</span> <span class="p">}</span>
-<span class="nc">td.alt</span> <span class="p">{</span> <span class="k">background-color</span><span class="o">:</span> <span class="m">#ffc</span><span class="p">;</span> <span class="k">background-color</span><span class="o">:</span> <span class="n">rgba</span><span class="p">(</span><span class="m">255</span><span class="o">,</span> <span class="m">255</span><span class="o">,</span> <span class="m">0</span><span class="o">,</span> <span class="m">0.1</span><span class="p">);</span> <span class="p">}</span>
+<span class="nc">td.alt</span> <span class="p">{</span> <span class="k">background-color</span><span class="o">:</span> <span class="m">#ffc</span><span class="p">;</span> <span class="k">background-color</span><span class="o">:</span> <span class="n">rgba</span><span class="p">(</span><span class="m">255</span><span class="o">,</span> <span class="m">255</span><span class="o">,</span> <span class="m">0</span><span class="o">,</span> <span class="m">0.2</span><span class="p">);</span> <span class="p">}</span>
 <span class="nt">&lt;/style&gt;</span> <span class="c">&lt;!-- or put the styling in your stylesheet --&gt;</span>
 </pre></div>
 
@@ -67,6 +67,8 @@
 <span class="nx">$</span><span class="p">(</span><span class="s1">'table'</span><span class="p">).</span><span class="nx">filterTable</span><span class="p">();</span> <span class="c1">//if this code appears after your tables; otherwise, include it in your document.ready() code.</span>
 <span class="nt">&lt;/script&gt;</span>
 </pre></div>
+
+<p>To make sure your headers aren't also filtered, make sure your headers are in the <code>thead</code> and not in the <code>tbody</code>.</p>
 
 <h2 id="options">Options</h2>
 
@@ -89,7 +91,7 @@
 <tr>
 <td><code>containerClass</code></td>
 <td>string</td>
-<td>table-filter</td>
+<td>filter-table</td>
 <td>Class applied to the main filter input container</td>
 </tr>
 <tr>
@@ -158,12 +160,12 @@
 <p>Suggested styling:</p>
 
 <div class="highlight"><pre><span class="nc">.filter-table</span> <span class="nc">.quick</span> <span class="p">{</span> <span class="k">margin-left</span><span class="o">:</span> <span class="m">0.5em</span><span class="p">;</span> <span class="k">font-size</span><span class="o">:</span> <span class="m">0.8em</span><span class="p">;</span> <span class="k">text-decoration</span><span class="o">:</span> <span class="k">none</span><span class="p">;</span> <span class="p">}</span>
-<span class="nc">td.alt</span> <span class="p">{</span> <span class="k">background-color</span><span class="o">:</span> <span class="m">#ffc</span><span class="p">;</span> <span class="k">background-color</span><span class="o">:</span> <span class="n">rgba</span><span class="p">(</span><span class="m">255</span><span class="o">,</span> <span class="m">255</span><span class="o">,</span> <span class="m">0</span><span class="o">,</span> <span class="m">0.1</span><span class="p">);</span> <span class="p">}</span>
+<span class="nc">td.alt</span> <span class="p">{</span> <span class="k">background-color</span><span class="o">:</span> <span class="m">#ffc</span><span class="p">;</span> <span class="k">background-color</span><span class="o">:</span> <span class="n">rgba</span><span class="p">(</span><span class="m">255</span><span class="o">,</span> <span class="m">255</span><span class="o">,</span> <span class="m">0</span><span class="o">,</span> <span class="m">0.2</span><span class="p">);</span> <span class="p">}</span>
 </pre></div>
 
 <h2>Dependencies</h2>
 
-<p>Other than jQuery, the plugin will take advantage of <a href="https://github.com/bgrins/bindWithDelay">bindWithDelay</a> if it is available.</p>
+<p>Other than jQuery, the plugin will take advantage of Brian Grinstead's <a href="https://github.com/bgrins/bindWithDelay">bindWithDelay</a> if it is available.</p>
 
 <h2>Change Log</h2>
 
