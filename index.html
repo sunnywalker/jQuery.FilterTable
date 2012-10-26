@@ -46,7 +46,7 @@
 
 <h2>Example</h2>
 
-<p>The <a href="#options">Options</a> table below has <code>filterTable({quickList:['string','boolean','false','class']})</code> applied to it.</p>
+<p>The <a href="#options">Options</a> table below has <code>filterTable()</code> applied to it.</p>
 
 <h2>Usage</h2>
 
@@ -55,7 +55,10 @@
 <div class="highlight"><pre><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/path/to/jquery.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
 <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/path/to/bindWithDelay.js"</span><span class="nt">&gt;&lt;/script&gt;</span> <span class="c">&lt;!-- optional --&gt;</span>
 <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/path/to/jquery.filtertable.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
-<span class="nt">&lt;style&gt;</span><span class="nc">.table-filter</span> <span class="nc">.quick</span> <span class="p">{</span> <span class="k">margin-left</span><span class="o">:</span> <span class="m">0.5em</span><span class="p">;</span> <span class="k">font-size</span><span class="o">:</span> <span class="m">0.8em</span><span class="p">;</span> <span class="k">text-decoration</span><span class="o">:</span> <span class="k">none</span><span class="p">;</span> <span class="p">}</span><span class="nt">&lt;/style&gt;</span> <span class="c">&lt;!-- or put the styling in your stylesheet --&gt;</span>
+<span class="nt">&lt;style&gt;</span>
+<span class="nc">.filter-table</span> <span class="nc">.quick</span> <span class="p">{</span> <span class="k">margin-left</span><span class="o">:</span> <span class="m">0.5em</span><span class="p">;</span> <span class="k">font-size</span><span class="o">:</span> <span class="m">0.8em</span><span class="p">;</span> <span class="k">text-decoration</span><span class="o">:</span> <span class="k">none</span><span class="p">;</span> <span class="p">}</span>
+<span class="nc">td.alt</span> <span class="p">{</span> <span class="k">background-color</span><span class="o">:</span> <span class="m">#ffc</span><span class="p">;</span> <span class="k">background-color</span><span class="o">:</span> <span class="n">rgba</span><span class="p">(</span><span class="m">255</span><span class="o">,</span> <span class="m">255</span><span class="o">,</span> <span class="m">0</span><span class="o">,</span> <span class="m">0.1</span><span class="p">);</span> <span class="p">}</span>
+<span class="nt">&lt;/style&gt;</span> <span class="c">&lt;!-- or put the styling in your stylesheet --&gt;</span>
 </pre></div>
 
 <p>Then apply <code>filterTable()</code> to your table(s):</p>
@@ -155,7 +158,7 @@
 <p>Suggested styling:</p>
 
 <div class="highlight"><pre><span class="nc">.filter-table</span> <span class="nc">.quick</span> <span class="p">{</span> <span class="k">margin-left</span><span class="o">:</span> <span class="m">0.5em</span><span class="p">;</span> <span class="k">font-size</span><span class="o">:</span> <span class="m">0.8em</span><span class="p">;</span> <span class="k">text-decoration</span><span class="o">:</span> <span class="k">none</span><span class="p">;</span> <span class="p">}</span>
-<span class="nc">td.alt</span> <span class="p">{</span> <span class="k">background-color</span><span class="o">:</span> <span class="m">#ffc</span><span class="p">;</span> <span class="k">background-color</span><span class="o">:</span> <span class="m">rgba(255,255,0,.1)</span><span class="p">;</span> <span class="p">}</span>
+<span class="nc">td.alt</span> <span class="p">{</span> <span class="k">background-color</span><span class="o">:</span> <span class="m">#ffc</span><span class="p">;</span> <span class="k">background-color</span><span class="o">:</span> <span class="n">rgba</span><span class="p">(</span><span class="m">255</span><span class="o">,</span> <span class="m">255</span><span class="o">,</span> <span class="m">0</span><span class="o">,</span> <span class="m">0.1</span><span class="p">);</span> <span class="p">}</span>
 </pre></div>
 
 <h2>Dependencies</h2>
