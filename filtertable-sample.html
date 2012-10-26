@@ -7,13 +7,17 @@
 	<script src="https://raw.github.com/sunnywalker/jQuery.FilterTable/master/jquery.filtertable.js"></script>
 	<script>
 	$(document).ready(function(){
-		$('table').filterTable({quickList:['O&#699;ahu','University']});
+		$('table').filterTable({quickList:['Oʻahu', 'Hawaiʻi', 'university', 'college', 'nothing']});
 	});
 	</script>
 	<style>
 	/* generic table styling */
-	table { border: 1px solid #333; border-collapse: collapse; }
-	th { border-bottom: 2px solid #666; background-color; #eee; }
+	table { border: 1px solid #ccc; border-collapse: collapse; font-size: 1.1em; }
+	th, td { padding: 5px; }
+	th { border-bottom: 2px solid #ccc; background-color: #eee; text-align: left; }
+	td { border: 1px solid #eee; border-width: 0 1px 1px 0; }
+	table a { text-decoration: none; }
+	table a:hover { text-decoration: underline; }
 
 	/* filter-table specific styling */
 	.filter-table .quick { margin-left: 0.5em; font-size: 0.8em; text-decoration: none; }
