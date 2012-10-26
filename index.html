@@ -1,44 +1,44 @@
 <!doctype html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>jQuery.FilterTable by sunnywalker</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="chrome=1">
+	<title>jQuery.FilterTable by sunnywalker</title>
 
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <script src="javascripts/scale.fix.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	<link rel="stylesheet" href="stylesheets/styles.css">
+	<link rel="stylesheet" href="stylesheets/pygment_trac.css">
+	<script src="javascripts/scale.fix.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-    <script src="https://raw.github.com/sunnywalker/jQuery.FilterTable/master/jquery.filtertable.js"></script>
-    <script>
-    $(document).ready(function(){
-    	$('table').filterTable({quickList:['class','tag']});
-    });
-    </script>
-    <style>
-    .filter-table .quick { margin-left: 0.5em; font-size: 0.8em; text-decoration: none; }
-    td.alt { background-color: #ffc; background-color: rgba(255, 255, 0, 0.2); }
-    </style>
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+	<script src="https://raw.github.com/sunnywalker/jQuery.FilterTable/master/jquery.filtertable.js"></script>
+	<script>
+	$(document).ready(function(){
+		$('table').filterTable({quickList:['class','tag']});
+	});
+	</script>
+	<style>
+	.filter-table .quick { margin-left: 0.5em; font-size: 0.8em; text-decoration: none; }
+	td.alt { background-color: #ffc; background-color: rgba(255, 255, 0, 0.2); }
+	</style>
   </head>
   <body>
-    <div class="wrapper">
-      <header>
-        <h1>jQuery.FilterTable</h1>
-        <p>Live searching/filtering for HTML tables in a jQuery plugin</p>
-        <p class="view"><a href="https://github.com/sunnywalker/jQuery.FilterTable">View the Project on GitHub <small>sunnywalker/jQuery.FilterTable</small></a></p>
-        <ul>
-          <li><a href="https://github.com/sunnywalker/jQuery.FilterTable/zipball/master">Download <strong>ZIP File</strong></a></li>
-          <li><a href="https://github.com/sunnywalker/jQuery.FilterTable/tarball/master">Download <strong>TAR Ball</strong></a></li>
-          <li><a href="https://github.com/sunnywalker/jQuery.FilterTable">View On <strong>GitHub</strong></a></li>
-        </ul>
-      </header>
-      <section>
-        <h1>jQuery Filter Table Plugin</h1>
+	<div class="wrapper">
+	  <header>
+		<h1>jQuery.FilterTable</h1>
+		<p>Live searching/filtering for HTML tables in a jQuery plugin</p>
+		<p class="view"><a href="https://github.com/sunnywalker/jQuery.FilterTable">View the Project on GitHub <small>sunnywalker/jQuery.FilterTable</small></a></p>
+		<ul>
+		  <li><a href="https://github.com/sunnywalker/jQuery.FilterTable/zipball/master">Download <strong>ZIP File</strong></a></li>
+		  <li><a href="https://github.com/sunnywalker/jQuery.FilterTable/tarball/master">Download <strong>TAR Ball</strong></a></li>
+		  <li><a href="https://github.com/sunnywalker/jQuery.FilterTable">View On <strong>GitHub</strong></a></li>
+		</ul>
+	  </header>
+	  <section>
+		<h1>jQuery Filter Table Plugin</h1>
 
 <p>This plugin will add a search filter to tables. When typing in the filter, any rows that do not contain the filter will be hidden.</p>
 
@@ -163,6 +163,14 @@
 <span class="nt">td</span><span class="nc">.alt</span> <span class="p">{</span> <span class="k">background-color</span><span class="o">:</span> <span class="m">#ffc</span><span class="p">;</span> <span class="k">background-color</span><span class="o">:</span> <span class="n">rgba</span><span class="p">(</span><span class="m">255</span><span class="o">,</span> <span class="m">255</span><span class="o">,</span> <span class="m">0</span><span class="o">,</span> <span class="m">0.2</span><span class="p">);</span> <span class="p">}</span>
 </pre></div>
 
+<p>There is a caveat on automatic row striping. While alternating rows can be striped with CSS, such as:</p>
+
+<div class="highlight"><pre><span class="nt">tbody</span> <span class="nt">td</span><span class="nc"></span> <span class="nc">.quick</span> <span class="p">{</span> <span class="k">margin-left</span><span class="o">:</span> <span class="m">0.5em</span><span class="p">;</span> <span class="k">font-size</span><span class="o">:</span> <span class="m">0.8em</span><span class="p">;</span> <span class="k">text-decoration</span><span class="o">:</span> <span class="k">none</span><span class="p">;</span> <span class="p">}</span>
+<span class="nt">td</span><span class="nc">.alt</span> <span class="p">{</span> <span class="k">background-color</span><span class="o">:</span> <span class="m">#ffc</span><span class="p">;</span> <span class="k">background-color</span><span class="o">:</span> <span class="n">rgba</span><span class="p">(</span><span class="m">255</span><span class="o">,</span> <span class="m">255</span><span class="o">,</span> <span class="m">0</span><span class="o">,</span> <span class="m">0.2</span><span class="p">);</span> <span class="p">}</span>
+</pre></div>
+
+<p>Note that CSS cannot differentiate between visible and non-visible rows. To that end, it's better to use jQuery to add and remove a striping class to visible rows by defining a callback method in the options.</p>
+
 <h2>Dependencies</h2>
 
 <p>Other than jQuery, the plugin will take advantage of Brian Grinstead's <a href="https://github.com/bgrins/bindWithDelay">bindWithDelay</a> if it is available.</p>
@@ -184,13 +192,13 @@
 <p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
 
 <p>THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
-      </section>
-    </div>
-    <footer>
-      <p>Project maintained by <a href="https://github.com/sunnywalker">sunnywalker</a></p>
-      <p>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></p>
-    </footer>
-    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+	  </section>
+	</div>
+	<footer>
+	  <p>Project maintained by <a href="https://github.com/sunnywalker">sunnywalker</a></p>
+	  <p>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></p>
+	</footer>
+	<!--[if !IE]><script>fixScale(document);</script><![endif]-->
 
   </body>
 </html>

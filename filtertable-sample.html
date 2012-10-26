@@ -7,7 +7,12 @@
 	<script src="https://raw.github.com/sunnywalker/jQuery.FilterTable/master/jquery.filtertable.js"></script>
 	<script>
 	$(document).ready(function(){
-		$('table').filterTable({quickList:['Oʻahu', 'Hawaiʻi', 'university', 'college', 'neighbor island']});
+		$('table').filterTable({
+			quickList: ['Oʻahu', 'Hawaiʻi', 'university', 'college', 'neighbor island'],
+			callback: function(term, table) {
+				table.find('tr').removeClass('striped').filter(':visible').addClass('striped');
+			}
+		});
 	});
 	</script>
 	<style>
@@ -20,11 +25,14 @@
 	table a:hover { text-decoration: underline; }
 	tr :last-child { text-align: right; }
 
+	/*table.striped tbody tr:nth-child(even) { background-color: #f0f8ff; }*/
+	tr.striped { background-color: #f0f8ff; }
+
 	/* hide content from view but not from searching */
 	.hidden { display: none; }
 
 	/* filter-table specific styling */
-	.filter-table .quick { margin-left: 0.5em; font-size: 0.8em; text-decoration: none; }
+	.filter-table .quick { margin-left: 1em; font-size: 0.8em; text-decoration: none; }
 	.fitler-table .quick:hover { text-decoration: underline; }
 	td.alt { background-color: #ffc; background-color: rgba(255, 255, 0, 0.2); }
 	</style>
@@ -94,7 +102,5 @@
 			</tr>
 		</tbody>
 	</table>
-	<h2>Tips and Tricks</h2>
-	<p><strong>Filtering on hidden data:</strong> The &ldquo;neighbor island&rdquo; quick link is accomplished by having cell content hidden via CSS.</p>
 </body>
 </html>
