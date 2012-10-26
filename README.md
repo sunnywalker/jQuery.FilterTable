@@ -14,7 +14,10 @@ Include the dependencies:
 <script src="/path/to/jquery.js"></script>
 <script src="/path/to/bindWithDelay.js"></script> <!-- optional -->
 <script src="/path/to/jquery.filtertable.js"></script>
-<style>.filter-table .quick { margin-left: 0.5em; font-size: 0.8em; text-decoration: none; }</style> <!-- or put the styling in your stylesheet -->
+<style>
+.filter-table .quick { margin-left: 0.5em; font-size: 0.8em; text-decoration: none; }
+td.alt { background-color: #ffc; background-color: rgba(255, 255, 0, 0.2); }
+</style> <!-- or put the styling in your stylesheet -->
 ```
 
 Then apply `filterTable()` to your table(s):
@@ -47,12 +50,12 @@ Suggested styling:
 
 ```css
 .filter-table .quick { margin-left: 0.5em; font-size: 0.8em; text-decoration: none; }
-td.alt { background-color: #ffe; background-color: rgba(255,255,0,.1); }
+td.alt { background-color: #ffc; background-color: rgba(255, 255, 0, 0.2); }
 ```
 
 ## Dependencies
 
-Other than jQuery, the plugin will take advantage of [bindWithDelay](https://github.com/bgrins/bindWithDelay) if it is available.
+Other than jQuery, the plugin will take advantage of Brian Grinstead's [bindWithDelay](https://github.com/bgrins/bindWithDelay) if it is available.
 
 ## Change Log
 
