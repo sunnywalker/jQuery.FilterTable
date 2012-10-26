@@ -63,7 +63,8 @@
 <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/path/to/jquery.filtertable.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
 <span class="nt">&lt;style&gt;</span>
 <span class="nc">.filter-table</span> <span class="nc">.quick</span> <span class="p">{</span> <span class="k">margin-left</span><span class="o">:</span> <span class="m">0.5em</span><span class="p">;</span> <span class="k">font-size</span><span class="o">:</span> <span class="m">0.8em</span><span class="p">;</span> <span class="k">text-decoration</span><span class="o">:</span> <span class="k">none</span><span class="p">;</span> <span class="p">}</span>
-<span class="nt">td</span><span class="nc">.alt</span> <span class="p">{</span> <span class="k">background-color</span><span class="o">:</span> <span class="m">#ffc</span><span class="p">;</span> <span class="k">background-color</span><span class="o">:</span> <span class="n">rgba</span><span class="p">(</span><span class="m">255</span><span class="o">,</span> <span class="m">255</span><span class="o">,</span> <span class="m">0</span><span class="o">,</span> <span class="m">0.2</span><span class="p">);</span> <span class="p">}</span>
+<span class="nc">.fitler-table</span> <span class="nc">.quick</span><span class="nd">:hover</span> <span class="p">{</span> <span class="k">text-decoration</span><span class="o">:</span> <span class="k">underline</span><span class="p">;</span> <span class="p">}</span>
+<span class="nt">td</span><span class="nc">.alt</span> <span class="p">{</span> <span class="k">background-color</span><span class="o">:</span> <span class="m">#ffc</span><span class="p">;</span> <span class="k">background-color</span><span class="o">:</span> <span class="n">rgba</span><span class="p">(</span><span class="m">255</span><span class="o">,</span> <span class="m">255</span><span class="o">,</span> <span class="m">0</span><span class="o">,</span> <span class="m">0</span><span class="o">.</span><span class="m">2</span><span class="p">);</span> <span class="p">}</span>
 <span class="nt">&lt;/style&gt;</span> <span class="c">&lt;!-- or put the styling in your stylesheet --&gt;</span>
 </pre></div>
 
@@ -166,16 +167,23 @@
 <p>Suggested styling:</p>
 
 <div class="highlight"><pre><span class="nc">.filter-table</span> <span class="nc">.quick</span> <span class="p">{</span> <span class="k">margin-left</span><span class="o">:</span> <span class="m">0.5em</span><span class="p">;</span> <span class="k">font-size</span><span class="o">:</span> <span class="m">0.8em</span><span class="p">;</span> <span class="k">text-decoration</span><span class="o">:</span> <span class="k">none</span><span class="p">;</span> <span class="p">}</span>
-<span class="nt">td</span><span class="nc">.alt</span> <span class="p">{</span> <span class="k">background-color</span><span class="o">:</span> <span class="m">#ffc</span><span class="p">;</span> <span class="k">background-color</span><span class="o">:</span> <span class="n">rgba</span><span class="p">(</span><span class="m">255</span><span class="o">,</span> <span class="m">255</span><span class="o">,</span> <span class="m">0</span><span class="o">,</span> <span class="m">0.2</span><span class="p">);</span> <span class="p">}</span>
+<span class="nc">.fitler-table</span> <span class="nc">.quick</span><span class="nd">:hover</span> <span class="p">{</span> <span class="k">text-decoration</span><span class="o">:</span> <span class="k">underline</span><span class="p">;</span> <span class="p">}</span>
+<span class="nt">td</span><span class="nc">.alt</span> <span class="p">{</span> <span class="k">background-color</span><span class="o">:</span> <span class="m">#ffc</span><span class="p">;</span> <span class="k">background-color</span><span class="o">:</span> <span class="n">rgba</span><span class="p">(</span><span class="m">255</span><span class="o">,</span> <span class="m">255</span><span class="o">,</span> <span class="m">0</span><span class="o">,</span> <span class="m">0</span><span class="o">.</span><span class="m">2</span><span class="p">);</span> <span class="p">}</span>
 </pre></div>
 
 <p>There is a caveat on automatic row striping. While alternating rows can be striped with CSS, such as:</p>
 
-<div class="highlight"><pre><span class="nt">tbody</span> <span class="nt">td</span><span class="nc"></span> <span class="nc">.quick</span> <span class="p">{</span> <span class="k">margin-left</span><span class="o">:</span> <span class="m">0.5em</span><span class="p">;</span> <span class="k">font-size</span><span class="o">:</span> <span class="m">0.8em</span><span class="p">;</span> <span class="k">text-decoration</span><span class="o">:</span> <span class="k">none</span><span class="p">;</span> <span class="p">}</span>
-<span class="nt">td</span><span class="nc">.alt</span> <span class="p">{</span> <span class="k">background-color</span><span class="o">:</span> <span class="m">#ffc</span><span class="p">;</span> <span class="k">background-color</span><span class="o">:</span> <span class="n">rgba</span><span class="p">(</span><span class="m">255</span><span class="o">,</span> <span class="m">255</span><span class="o">,</span> <span class="m">0</span><span class="o">,</span> <span class="m">0.2</span><span class="p">);</span> <span class="p">}</span>
+<div class="highlight"><pre><span class="nt">tbody</span> <span class="nt">td</span><span class="nd">:nth-child</span><span class="o">(</span><span class="nt">even</span><span class="o">)</span> <span class="p">{</span> <span class="k">background-color</span><span class="o">:</span> <span class="m">#f0f8ff</span><span class="p">;</span> <span class="p">}</span>
 </pre></div>
 
-<p>Note that CSS cannot differentiate between visible and non-visible rows. To that end, it's better to use jQuery to add and remove a striping class to visible rows by defining a callback method in the options.</p>
+<p>Note that CSS cannot differentiate between visible and non-visible rows. To that end, it's better to use jQuery to add and remove a striping class to visible rows by defining a callback function in the options.</p>
+
+<div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'table'</span><span class="p">).</span><span class="nx">filterTable</span><span class="p">({</span>
+    <span class="nx">callback</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">term</span><span class="p">,</span> <span class="nx">table</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">table</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">'tr'</span><span class="p">).</span><span class="nx">removeClass</span><span class="p">(</span><span class="s1">'striped'</span><span class="p">).</span><span class="nx">filter</span><span class="p">(</span><span class="s1">':visible:'</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s1">'striped'</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
 
 <h2>Dependencies</h2>
 
