@@ -77,8 +77,6 @@ Other than jQuery, the plugin will take advantage of Brian Grinstead's [bindWith
 
 ## Change Log
 
-<h2>Change Log</h2>
-
 ### 1.2
 
 - Changed the default container class to `filter-table` from `table-filter` to be consistent with the plugin name.
