@@ -6,7 +6,7 @@
  *
  * Utilizes bindWithDelay() if available. https://github.com/bgrins/bindWithDelay
  *
- * @version v1.2
+ * @version v1.3
  * @author Sunny Walker, swalker@hawaii.edu
  */
 (function($){
@@ -46,7 +46,7 @@
 
 		return this.each(function(){
 			var t=$(this), tbody=t.find('tbody'), container=null, filter=null;
-			if (t[0].nodeName==='TABLE' && tbody.length>0 && (settings.minRows===0 || (settings.minRows>0 && tbody.find('tr').length>settings.minRows))) { //only if object is a table and there's a tbody and at least minRows trs
+			if (t[0].nodeName==='TABLE' && tbody.length>0 && (settings.minRows===0 || (settings.minRows>0 && tbody.find('tr').length>settings.minRows)) && !t.prev().hasClass(settings.containerClass)) { //only if object is a table and there's a tbody and at least minRows trs and hasn't already had a filter added
 				container = $('<'+settings.containerTag+' />');
 				if (settings.containerClass!=='') container.addClass(settings.containerClass);
 				container.prepend(settings.label+' ');
