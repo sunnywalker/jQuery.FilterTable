@@ -77,6 +77,10 @@ Other than jQuery, the plugin will take advantage of Brian Grinstead's [bindWith
 
 ## Change Log
 
+### 1.3
+
+- The functionality is not reapplied to tables that have already been processed. This allows you to call `$(selector).filterTable()` again for dynamically created data without it affecting previously filtered tables.
+
 ### 1.2
 
 - Changed the default container class to `filter-table` from `table-filter` to be consistent with the plugin name.
