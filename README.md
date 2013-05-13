@@ -77,6 +77,12 @@ Other than jQuery, the plugin will take advantage of Brian Grinstead's [bindWith
 
 ## Change Log
 
+### 1.4
+
+- Fixed a bug with filtering rarely showing rows that did not have a match with the search query.
+- Added example pages.
+- Improved inline documentation of the source code.
+
 ### 1.3
 
 - The functionality is not reapplied to tables that have already been processed. This allows you to call `$(selector).filterTable()` again for dynamically created data without it affecting previously filtered tables.
