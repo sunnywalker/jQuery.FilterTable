@@ -68,7 +68,7 @@ Note that CSS cannot differentiate between visible and non-visible rows. To that
 ```javascript
 $('table').filterTable({
 	callback: function(term, table) {
-		table.find('tr').removeClass('striped').filter(':visible:').addClass('striped');
+		table.find('tr').removeClass('striped').filter(':visible:even').addClass('striped');
 	}
 });
 ```
