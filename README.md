@@ -45,6 +45,8 @@ $('table').filterTable(); //if this code appears after your tables; otherwise, i
 | `placeholder` | string | search this table | HTML5 placeholder text for the filter input |
 | `quickList` | array | [] | List of clickable phrases to quick fill the search |
 | `quickListClass` | string | quick | Class of each quick list item |
+| `quickListGroupTag` | string | '' | Tag name surrounding quick list items (e.g., `ul`) |
+| `quickListTag` | string | a | Tag name of each quick list item (e.g., `a` or `li`) |
 | `visibleClass` | string | visible | Class applied to visible rows |
 
 ## Styling
