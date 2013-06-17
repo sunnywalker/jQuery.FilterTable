@@ -79,22 +79,24 @@
 <p>To make sure your headers aren't also filtered, make sure your headers are in the <code>thead</code> and not in the <code>tbody</code>.</p>
 
 <h2 id="options">Options</h2>
-
 <table>
-<thead>
-<tr>
+<tbody><tr>
 <th>Option</th>
 <th>Type</th>
 <th>Default</th>
 <th>Description</th>
 </tr>
-</thead>
-<tbody>
 <tr>
-<td><code>hideTFootOnFilter</code></td>
-<td>boolean</td>
-<td>false</td>
-<td>Controls whether the table's tfoot(s) will be hidden when the table is filtered</td>
+<td><code>callback</code></td>
+<td>function(<code>term</code>, <code>table</code>)</td>
+<td><em>null</em></td>
+<td>Callback function after a filter is performed. Parameters: <ul>
+<li>
+<code>term</code> filter term (string)</li>
+<li>
+<code>table</code> table being filtered (jQuery object)</li>
+</ul>
+</td>
 </tr>
 <tr>
 <td><code>containerClass</code></td>
@@ -109,10 +111,22 @@
 <td>Tag name of the main filter input container</td>
 </tr>
 <tr>
+<td><code>hideTFootOnFilter</code></td>
+<td>boolean</td>
+<td>false</td>
+<td>Controls whether the table's tfoot(s) will be hidden when the table is filtered</td>
+</tr>
+<tr>
 <td><code>highlightClass</code></td>
 <td>string</td>
 <td>alt</td>
-<td>Class applied to table cells containing the filter term</td>
+<td>Class applied to cells containing the filter term</td>
+</tr>
+<tr>
+<td><code>inputName</code></td>
+<td>string</td>
+<td>filter-table</td>
+<td>Name attribute of the filter input field</td>
 </tr>
 <tr>
 <td><code>inputType</code></td>
@@ -151,19 +165,16 @@
 <td>Class of each quick list item</td>
 </tr>
 <tr>
-<td><code>callback</code></td>
-<td>function(<code>term</code>, <code>table</code>)</td>
-<td><em>null</em></td>
-<td>Callback function after a filter is performed. Parameters: <ul>
-<li>
-<code>term</code> filter term (string)</li>
-<li>
-<code>table</code> table being filtered (jQuery object)</li>
-</ul>
-</td>
+<td><code>visibleClass</code></td>
+<td>string</td>
+<td>visible</td>
+<td>Class applied to visible rows</td>
 </tr>
 </tbody>
-</table><h2>Styling</h2>
+</table>
+
+
+<h2>Styling</h2>
 
 <p>Suggested styling:</p>
 
@@ -181,7 +192,7 @@
 
 <div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'table'</span><span class="p">).</span><span class="nx">filterTable</span><span class="p">({</span>
     <span class="nx">callback</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">term</span><span class="p">,</span> <span class="nx">table</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">table</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">'tr'</span><span class="p">).</span><span class="nx">removeClass</span><span class="p">(</span><span class="s1">'striped'</span><span class="p">).</span><span class="nx">filter</span><span class="p">(</span><span class="s1">':visible:'</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s1">'striped'</span><span class="p">);</span>
+        <span class="nx">table</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">'tr'</span><span class="p">).</span><span class="nx">removeClass</span><span class="p">(</span><span class="s1">'striped'</span><span class="p">).</span><span class="nx">filter</span><span class="p">(</span><span class="s1">':visible:even'</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s1">'striped'</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">});</span>
 </pre></div>
@@ -194,11 +205,30 @@
 
 <h2>Change Log</h2>
 
+<h3>1.5</h3>
+<ul>
+<li><strong>There is a potentially significant change in functionality in this version.</strong> The callback is now called every time the search query changes. Previously it was only called when the change was a non-empty query. That is, the callback is now called when the query is cleared too.</li>
+<li>Additional features have been taken from <a href="https://github.com/tomasc">Tomas Celizna</a>'s CoffeeScript-based fork:
+<ul>
+<li>The quick list items can now be something other than anchor tags. See the <code>quickListTag</code> and <code>quickListGroupTag</code> options.</li>
+<li>The filter query field can now have a name attribute assigned to it. See the <code>inputName</code> option.</li>
+<li>The class applied to visible rows is now user changeable. See the <code>visibleClass</code> option.</li>
+<li>The options in the documentation have been ordered alphabetically for easier scanning.</li>
+</ul>
+</li>
+<li>The internal pseudo selector is now created appropriately according to the jQuery version. (Pseudo selector generation changed in jQuery 1.8)</li>
+</ul>
+
 <h3>1.4</h3>
 <ul>
 <li>Fixed a bug with filtering rarely showing rows that did not have a match with the search query.</li>
 <li>Added example pages.</li>
 <li>Improved inline documentation of the source code.</li>
+</ul>
+
+<h3>1.3.1 (in spirit)</h3>
+<ul>
+<li>Added minified version of the plugin (thanks <a href="https://github.com/lucanos">Luke Stevenson</a>).</li>
 </ul>
 
 <h3>1.3</h3>
