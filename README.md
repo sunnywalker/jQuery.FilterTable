@@ -33,17 +33,19 @@ $('table').filterTable(); //if this code appears after your tables; otherwise, i
 
 | Option | Type | Default | Description |
 | ------ | ---- | ------- | ----------- |
-| `hideTFootOnFilter` | boolean | false | Controls whether the table's tfoot(s) will be hidden when the table is filtered |
+| `callback` | function(`term`, `table`) | _null_ | Callback function after a filter is performed. Parameters: <ul><li><code>term</code> filter term (string)</li><li><code>table</code> table being filtered (jQuery object)</li></ul> |
 | `containerClass` | string | filter-table | Class applied to the main filter input container |
 | `containerTag` | string | p | Tag name of the main filter input container |
+| `hideTFootOnFilter` | boolean | false | Controls whether the table's tfoot(s) will be hidden when the table is filtered |
 | `highlightClass` | string | alt | Class applied to cells containing the filter term |
+| `inputName` | string | filter-table | Name attribute of the filter input field |
 | `inputType` | string | search | Tag name of the filter input itself |
 | `label` | string | Filter: | Text to precede the filter input |
 | `minRows` | integer | 8 | Only show the filter on tables with this number of rows or more |
 | `placeholder` | string | search this table | HTML5 placeholder text for the filter input |
 | `quickList` | array | [] | List of clickable phrases to quick fill the search |
 | `quickListClass` | string | quick | Class of each quick list item |
-| `callback` | function(`term`, `table`) | _null_ | Callback function after a filter is performed. Parameters: <ul><li><code>term</code> filter term (string)</li><li><code>table</code> table being filtered (jQuery object)</li></ul> |
+| `visibleClass` | string | visible | Class applied to visible rows |
 
 ## Styling
 
@@ -77,11 +79,25 @@ Other than jQuery, the plugin will take advantage of Brian Grinstead's [bindWith
 
 ## Change Log
 
+### 1.5
+
+- **There is a potentially significant change in functionality in this version.** The callback is now called every time the search query changes. Previously it was only called when the change was a non-empty query. That is, the callback is now called when the query is cleared too.
+- Additional features have been taken from [Tomas Celizna](https://github.com/tomasc)'s CoffeeScript-based fork:
+    - The quick list items can now be something other than anchor tags. See the `quickListTag` and `quickListGroupTag` options.
+    - The filter query field can now have a name attribute assigned to it. See the `inputName` option.
+    - The class applied to visible rows is now user changeable. See the `visibleClass` option.
+	- The options in the documentation have been ordered alphabetically for easier scanning.
+- The internal pseudo selector is now created appropriately according to the jQuery version. (Pseudo selector generation changed in jQuery 1.8)
+
 ### 1.4
 
 - Fixed a bug with filtering rarely showing rows that did not have a match with the search query.
 - Added example pages.
 - Improved inline documentation of the source code.
+
+### 1.3.1 (in spirit)
+
+- Added minified version of the plugin (thanks [Luke Stevenson](https://github.com/lucanos)).
 
 ### 1.3
 
