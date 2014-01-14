@@ -48,6 +48,7 @@ $('table').filterTable(); //if this code appears after your tables; otherwise, i
 | `quickListGroupTag` | string | '' | Tag name surrounding quick list items (e.g., `ul`) |
 | `quickListTag` | string | a | Tag name of each quick list item (e.g., `a` or `li`) |
 | `visibleClass` | string | visible | Class applied to visible rows |
+| `autofocus` | boolean | true | Makes the filter input field autofocused |
 
 ## Styling
 
