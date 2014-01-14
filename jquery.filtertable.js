@@ -38,7 +38,8 @@
 				quickListClass:    'quick',             // class of each quick list item
 				quickListGroupTag: '',                  // tag surrounding quick list items (e.g., ul)
 				quickListTag:      'a',                 // tag type of each quick list item (e.g., a or li)
-				visibleClass:      'visible'            // class applied to visible rows
+				visibleClass:      'visible',           // class applied to visible rows
+				autofocus:         true                 // make the filter input field autofocused
 			},
 			hsc = function(text) { // mimic PHP's htmlspecialchars() function
 				return text.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -78,6 +79,11 @@
 				}
 				container.prepend(settings.label+' '); // add the label for the filter field
 				filter = $('<input type="'+settings.inputType+'" placeholder="'+settings.placeholder+'" name="'+settings.inputName+'" />'); // build the filter field
+				
+				if ( settings.autofocus ) {
+					filter.attr("autofocus", "autofocus");
+				}
+				
 				if ($.fn.bindWithDelay) { // does bindWithDelay() exist?
 					filter.bindWithDelay('keyup', function() { // bind doFiltering() to keyup (delayed)
 						doFiltering(t, $(this).val());
