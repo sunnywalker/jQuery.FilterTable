@@ -8,3 +8,7 @@
 Icon?
 ehthumbs.db
 Thumbs.db
+
+# Codekit files
+config.codekit
+.codekit-cache

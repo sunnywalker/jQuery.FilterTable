@@ -33,6 +33,7 @@ $('table').filterTable(); //if this code appears after your tables; otherwise, i
 
 | Option | Type | Default | Description |
 | ------ | ---- | ------- | ----------- |
+| `autofocus` | boolean | false | Makes the filter input field autofocused _(not recommended for accessibility reasons)_ |
 | `callback` | function(`term`, `table`) | _null_ | Callback function after a filter is performed. Parameters: <ul><li><code>term</code> filter term (string)</li><li><code>table</code> table being filtered (jQuery object)</li></ul> |
 | `containerClass` | string | filter-table | Class applied to the main filter input container |
 | `containerTag` | string | p | Tag name of the main filter input container |
@@ -48,7 +49,6 @@ $('table').filterTable(); //if this code appears after your tables; otherwise, i
 | `quickListGroupTag` | string | '' | Tag name surrounding quick list items (e.g., `ul`) |
 | `quickListTag` | string | a | Tag name of each quick list item (e.g., `a` or `li`) |
 | `visibleClass` | string | visible | Class applied to visible rows |
-| `autofocus` | boolean | true | Makes the filter input field autofocused |
 
 ## Styling
 
@@ -81,6 +81,10 @@ $('table').filterTable({
 Other than jQuery, the plugin will take advantage of Brian Grinstead's [bindWithDelay](https://github.com/bgrins/bindWithDelay) if it is available.
 
 ## Change Log
+
+### 1.5.1
+
+- Added an `autofocus` option, thanks to [Robert McLeod](https://github.com/penguinpowernz), which is disabled by default. Note that autofocus is generally a bad idea for accessibility reasons, but if you do not need to be compliant or don't need/want to support accessibility users, it's a nice user experience option.
 
 ### 1.5
 
