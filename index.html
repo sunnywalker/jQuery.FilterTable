@@ -13,7 +13,7 @@
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 	<script src="jquery.filtertable.min.js"></script>
 	<script>
 	$(document).ready(function(){
@@ -52,7 +52,8 @@
 <ul>
 	<li><a href="filtertable-sample.html">Plain sample</a></li>
 	<li><a href="filtertable-quick.html">Quick List sample</a></li>
-	<li><a href="filtertable-striping.html">Row Striping sample</a></li>
+    <li><a href="filtertable-striping.html">Row Striping sample</a></li>
+	<li><a href="filtertable-existing-input.html">Sample with an existing input for filtering</a></li>
 </ul>
 
 <h2>Usage</h2>
@@ -85,6 +86,12 @@
 <th>Type</th>
 <th>Default</th>
 <th>Description</th>
+</tr>
+<tr>
+<td><code>autofocus</code></td>
+<td>boolean</td>
+<td>false</td>
+<td>Makes the filter input field autofocused <em>(not recommended for accessibility reasons)</em></td>
 </tr>
 <tr>
 <td><code>callback</code></td>
@@ -121,6 +128,12 @@
 <td>string</td>
 <td>alt</td>
 <td>Class applied to cells containing the filter term</td>
+</tr>
+<tr>
+<td><code>inputSelector</code></td>
+<td>string</td>
+<td><em>null</em></td>
+<td>Use this selector to find the filter input instead of creating a new one (only works if selector returns a single element)</td>
 </tr>
 <tr>
 <td><code>inputName</code></td>
@@ -216,6 +229,21 @@
 <p>Other than jQuery, the plugin will take advantage of Brian Grinstead's <a href="https://github.com/bgrins/bindWithDelay">bindWithDelay</a> if it is available.</p>
 
 <h2>Change Log</h2>
+
+<h3>1.5.2</h3>
+<ul>
+<li>Added an <code>inputSelector</code> option, thanks to <a href="https://github.com/pratikt">Pratik Thakkar</a>, which specifies a selector for an existing element to use instead of creating a new filter input field. There are some caveats of which to be aware:
+<ul>
+<li>If the element doesn't exist, a filter input field will be created as normal.</li>
+<li>Because of quick lists and other options, this setting will be ignored and the filter input field will be created as normal if the resolution of the <code>inputSelector</code> returns more than one element.</li>
+</ul>
+</li>
+</ul>
+
+<h3>1.5.1</h3>
+<ul>
+<li>Added an <code>autofocus</code> option, thanks to <a href="https://github.com/penguinpowernz">Robert McLeod</a>, which is disabled by default. Note that autofocus is generally a bad idea for accessibility reasons, but if you do not need to be compliant or don't want to support accessibility users, it's a nice user experience option.</li>
+</ul>
 
 <h3>1.5</h3>
 <ul>
