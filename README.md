@@ -39,6 +39,7 @@ $('table').filterTable(); //if this code appears after your tables; otherwise, i
 | `containerTag` | string | p | Tag name of the main filter input container |
 | `hideTFootOnFilter` | boolean | false | Controls whether the table's tfoot(s) will be hidden when the table is filtered |
 | `highlightClass` | string | alt | Class applied to cells containing the filter term |
+| `inputSelector` | string | _null_ | Use this selectors to find the filter input instead of creating a new one (only works if selector returns a single element) |
 | `inputName` | string | filter-table | Name attribute of the filter input field |
 | `inputType` | string | search | Tag name of the filter input itself |
 | `label` | string | Filter: | Text to precede the filter input |
@@ -70,9 +71,9 @@ Note that CSS cannot differentiate between visible and non-visible rows. To that
 
 ```javascript
 $('table').filterTable({
-	callback: function(term, table) {
-		table.find('tr').removeClass('striped').filter(':visible:even').addClass('striped');
-	}
+    callback: function(term, table) {
+        table.find('tr').removeClass('striped').filter(':visible:even').addClass('striped');
+    }
 });
 ```
 
@@ -82,9 +83,15 @@ Other than jQuery, the plugin will take advantage of Brian Grinstead's [bindWith
 
 ## Change Log
 
+### 1.5.2
+
+- Added an `inputSelector` option, thanks to [Pratik Thakkar](https://github.com/pratikt), which specifies a selector for an existing element to use instead of creating a new filter input field. There are some caveats of which to be aware:
+    - If the element doesn't exist, a filter input field will be created as normal.
+    - Because of quick lists and other options, this setting will be ignored and the filter input field will be created as normal if the resolution of the `inputSelector` returns more than one element.
+
 ### 1.5.1
 
-- Added an `autofocus` option, thanks to [Robert McLeod](https://github.com/penguinpowernz), which is disabled by default. Note that autofocus is generally a bad idea for accessibility reasons, but if you do not need to be compliant or don't need/want to support accessibility users, it's a nice user experience option.
+- Added an `autofocus` option, thanks to [Robert McLeod](https://github.com/penguinpowernz), which is disabled by default. Note that autofocus is generally a bad idea for accessibility reasons, but if you do not need to be compliant or don't want to support accessibility users, it's a nice user experience option.
 
 ### 1.5
 
@@ -93,7 +100,7 @@ Other than jQuery, the plugin will take advantage of Brian Grinstead's [bindWith
     - The quick list items can now be something other than anchor tags. See the `quickListTag` and `quickListGroupTag` options.
     - The filter query field can now have a name attribute assigned to it. See the `inputName` option.
     - The class applied to visible rows is now user changeable. See the `visibleClass` option.
-	- The options in the documentation have been ordered alphabetically for easier scanning.
+    - The options in the documentation have been ordered alphabetically for easier scanning.
 - The internal pseudo selector is now created appropriately according to the jQuery version. (Pseudo selector generation changed in jQuery 1.8)
 
 ### 1.4

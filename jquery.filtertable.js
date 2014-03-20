@@ -6,7 +6,7 @@
  *
  * Utilizes bindWithDelay() if available. https://github.com/bgrins/bindWithDelay
  *
- * @version v1.5.1
+ * @version v1.5.2
  * @author Sunny Walker, swalker@hawaii.edu
  */
 (function($) {
@@ -30,6 +30,7 @@
                 containerTag:      'p',                 // tag name of the container
                 hideTFootOnFilter: false,               // if true, the table's tfoot(s) will be hidden when the table is filtered
                 highlightClass:    'alt',               // class applied to cells containing the filter term
+                inputSelector:     null,                // use the element with this selector for the filter input field instead of creating one
                 inputName:         '',                  // name of filter input field
                 inputType:         'search',            // tag name of the filter input tag
                 label:             'Filter:',           // text to precede the filter input tag
@@ -71,19 +72,24 @@
                 tbody = t.find('tbody'), // cache the tbody
                 container = null, // placeholder for the filter field container DOM node
                 quicks = null, // placeholder for the quick list items
-                filter = null; // placeholder for the field field DOM node
+                filter = null, // placeholder for the field field DOM node
+                created_filter = true; // was the filter created or chosen from an existing element?
             if (t[0].nodeName==='TABLE' && tbody.length>0 && (settings.minRows===0 || (settings.minRows>0 && tbody.find('tr').length>settings.minRows)) && !t.prev().hasClass(settings.containerClass)) { // only if object is a table and there's a tbody and at least minRows trs and hasn't already had a filter added
-                container = $('<'+settings.containerTag+' />'); // build the container tag for the filter field
-                if (settings.containerClass!=='') { // add any classes that need to be added
-                    container.addClass(settings.containerClass);
+                if (settings.filterSelector && $(settings.filterSelector).length===1) { // use a single existing field as the filter input field
+                    filter = $(settings.filterSelector);
+                    container = filter.parent(); // container to hold the quick list options
+                    created_filter = false;
+                } else { // create the filter input field (and container)
+                    container = $('<'+settings.containerTag+' />'); // build the container tag for the filter field
+                    if (settings.containerClass!=='') { // add any classes that need to be added
+                        container.addClass(settings.containerClass);
+                    }
+                    container.prepend(settings.label+' '); // add the label for the filter field
+                    filter = $('<input type="'+settings.inputType+'" placeholder="'+settings.placeholder+'" name="'+settings.inputName+'" />'); // build the filter field
                 }
-                container.prepend(settings.label+' '); // add the label for the filter field
-                filter = $('<input type="'+settings.inputType+'" placeholder="'+settings.placeholder+'" name="'+settings.inputName+'" />'); // build the filter field
-
-                if (settings.autofocus) {
+                if (settings.autofocus) { // add the autofocus attribute if requested
                     filter.attr('autofocus', true);
                 }
-
                 if ($.fn.bindWithDelay) { // does bindWithDelay() exist?
                     filter.bindWithDelay('keyup', function() { // bind doFiltering() to keyup (delayed)
                         doFiltering(t, $(this).val());
@@ -96,7 +102,9 @@
                 filter.bind('click search', function() { // bind doFiltering() to click and search events
                     doFiltering(t, $(this).val());
                 });
-                container.append(filter); // add the filter field to the container
+                if (created_filter) { // add the filter field to the container if it was created by the plugin
+                    container.append(filter);
+                }
                 if (settings.quickList.length>0) { // are there any quick list items to add?
                     quicks = settings.quickListGroupTag ? $('<'+settings.quickListGroupTag+' />') : container;
                     $.each(settings.quickList, function(index, value) { // for each quick list item...
@@ -115,7 +123,9 @@
                         container.append(quicks); // add the quick list groups container to the DOM if it isn't already there
                     }
                 } // if quick list items
-                t.before(container); // add the filter field and quick list container to just before the table
+                if (created_filter) { // add the filter field and quick list container to just before the table if it was created by the plugin
+                    t.before(container);
+                }
             } // if the functionality should be added
         }); // return this.each
     }; // $.fn.filterTable

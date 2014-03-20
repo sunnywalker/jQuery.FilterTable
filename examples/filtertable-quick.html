@@ -1,101 +1,103 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<title>jQuery.FilterTable Quick List Sample</title>
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-	<script src="../jquery.filtertable.min.js"></script>
-	<script>
-	$(document).ready(function() {
-		$('table').filterTable({
-			quickList: ['Oʻahu', 'Hawaiʻi', 'university', 'college', 'neighbor island']
-		});
-	});
-	</script>
-	<style>
-	/* generic table styling */
-	table { border-collapse: collapse; }
-	th, td { padding: 5px; }
-	th { border-bottom: 2px solid #999; background-color: #eee; vertical-align: bottom; }
-	td { border-bottom: 1px solid #ccc; }
-	table a { text-decoration: none; }
-	table a:hover { text-decoration: underline; }
-	tr :last-child { text-align: right; }
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery.FilterTable Quick List Sample</title>
+    <style>
+    /* generic table styling */
+    table { border-collapse: collapse; }
+    th, td { padding: 5px; }
+    th { border-bottom: 2px solid #999; background-color: #eee; vertical-align: bottom; }
+    td { border-bottom: 1px solid #ccc; }
+    table a { text-decoration: none; }
+    table a:hover { text-decoration: underline; }
+    tr :last-child { text-align: right; }
 
-	/* hide content from view but not from searching */
-	.hidden { display: none; }
+    /* hide content from view but not from searching */
+    .hidden { display: none; }
 
-	/* filter-table specific styling */
-	.filter-table .quick { margin-left: 1em; font-size: 0.8em; text-decoration: none; }
-	.fitler-table .quick:hover { text-decoration: underline; }
-	td.alt { background-color: #ffc; background-color: rgba(255, 255, 0, 0.2); }
-	</style>
+    /* filter-table specific styling */
+    .filter-table .quick { margin-left: 1em; font-size: 0.8em; text-decoration: none; }
+    .fitler-table .quick:hover { text-decoration: underline; }
+    td.alt { background-color: #ffc; background-color: rgba(255, 255, 0, 0.2); }
+    </style>
 </head>
 <body>
-	<h1>jQuery.FilterTable Quick List Sample</h1>
-	<p>This is a very plain sample of the <a href="http://sunnywalker.github.com/jQuery.FilterTable">jQuery.FilterTable plugin</a> which shows the usage of the <code>quickList</code> optional parameter.</p>
-	<h2>Main campuses of the University of Hawai&#699;i System</h2>
-	<table>
-		<thead>
-			<tr>
-				<th scope="col">Campus</th>
-				<th scope="col">Island</th>
-				<th scope="col">Fall 2011<br>Enrollment</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td><a href="http://hilo.hawaii.edu/">University of Hawai&#699;i at Hilo</a></td>
-				<td>Hawai&#699;i <span class="hidden">neighbor island</span></td>
-				<td>4,100</td>
-			</tr>
-			<tr>
-				<td><a href="http://manoa.hawaii.edu/">University of Hawai&#699;i at M&#257;noa</a></td>
-				<td>O&#699;ahu</td>
-				<td>20,400</td>
-			</tr>
-			<tr>
-				<td><a href="http://westoahu.hawaii.edu/">University of Hawai&#699;i—West O&#699;ahu</a></td>
-				<td>O&#699;ahu</td>
-				<td>1,600</td>
-			</tr>
-			<tr>
-				<td><a href="http://hawaii.hawaii.edu/">Hawai&#699;i Community College</a></td>
-				<td>Hawai&#699;i <span class="hidden">neighbor island</span></td>
-				<td>3,900</td>
-			</tr>
-			<tr>
-				<td><a href="http://honolulu.hawaii.edu/">Honolulu Community College</a></td>
-				<td>O&#699;ahu</td>
-				<td>4,600</td>
-			</tr>
-			<tr>
-				<td><a href="http://kapiolani.hawaii.edu/">Kapi&#699;olani Community College</a></td>
-				<td>O&#699;ahu</td>
-				<td>9,000</td>
-			</tr>
-			<tr>
-				<td><a href="http://kauai.hawaii.edu/">Kaua&#699;i Community College</a></td>
-				<td>Kaua&#699;i <span class="hidden">neighbor island</span></td>
-				<td>1,400</td>
-			</tr>
-			<tr>
-				<td><a href="http://leeward.hawaii.edu/">Leeward Community College</a></td>
-				<td>O&#699;ahu</td>
-				<td>7,900</td>
-			</tr>
-			<tr>
-				<td><a href="http://maui.hawaii.edu/">Maui College</a></td>
-				<td>Maui <span class="hidden">neighbor island</span></td>
-				<td>4,500</td>
-			</tr>
-			<tr>
-				<td><a href="http://windward.hawaii.edu/">Windward Community College</a></td>
-				<td>O&#699;ahu</td>
-				<td>2,700</td>
-			</tr>
-		</tbody>
-	</table>
-	<p>Note that while the filter is case-insensitive, it is UTF-8 aware so searching for <code>oahu</code> will not find <code>O&#699;ahu</code>.</p>
+    <h1>jQuery.FilterTable Quick List Sample</h1>
+    <p>This is a very plain sample of the <a href="http://sunnywalker.github.com/jQuery.FilterTable">jQuery.FilterTable plugin</a> which shows the usage of the <code>quickList</code> optional parameter.</p>
+    <h2>Main campuses of the University of Hawai&#699;i System</h2>
+    <table>
+        <thead>
+            <tr>
+                <th scope="col">Campus</th>
+                <th scope="col">Island</th>
+                <th scope="col">Fall 2011<br>Enrollment</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><a href="http://hilo.hawaii.edu/">University of Hawai&#699;i at Hilo</a></td>
+                <td>Hawai&#699;i <span class="hidden">neighbor island</span></td>
+                <td>4,100</td>
+            </tr>
+            <tr>
+                <td><a href="http://manoa.hawaii.edu/">University of Hawai&#699;i at M&#257;noa</a></td>
+                <td>O&#699;ahu</td>
+                <td>20,400</td>
+            </tr>
+            <tr>
+                <td><a href="http://westoahu.hawaii.edu/">University of Hawai&#699;i—West O&#699;ahu</a></td>
+                <td>O&#699;ahu</td>
+                <td>1,600</td>
+            </tr>
+            <tr>
+                <td><a href="http://hawaii.hawaii.edu/">Hawai&#699;i Community College</a></td>
+                <td>Hawai&#699;i <span class="hidden">neighbor island</span></td>
+                <td>3,900</td>
+            </tr>
+            <tr>
+                <td><a href="http://honolulu.hawaii.edu/">Honolulu Community College</a></td>
+                <td>O&#699;ahu</td>
+                <td>4,600</td>
+            </tr>
+            <tr>
+                <td><a href="http://kapiolani.hawaii.edu/">Kapi&#699;olani Community College</a></td>
+                <td>O&#699;ahu</td>
+                <td>9,000</td>
+            </tr>
+            <tr>
+                <td><a href="http://kauai.hawaii.edu/">Kaua&#699;i Community College</a></td>
+                <td>Kaua&#699;i <span class="hidden">neighbor island</span></td>
+                <td>1,400</td>
+            </tr>
+            <tr>
+                <td><a href="http://leeward.hawaii.edu/">Leeward Community College</a></td>
+                <td>O&#699;ahu</td>
+                <td>7,900</td>
+            </tr>
+            <tr>
+                <td><a href="http://maui.hawaii.edu/">Maui College</a></td>
+                <td>Maui <span class="hidden">neighbor island</span></td>
+                <td>4,500</td>
+            </tr>
+            <tr>
+                <td><a href="http://windward.hawaii.edu/">Windward Community College</a></td>
+                <td>O&#699;ahu</td>
+                <td>2,700</td>
+            </tr>
+        </tbody>
+    </table>
+    <p>Note that while the filter is case-insensitive, it is UTF-8 aware so searching for <code>oahu</code> will not find <code>O&#699;ahu</code>.</p>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="../jquery.filtertable.min.js"></script>
+    <script>
+    $(document).ready(function() {
+        $('table').filterTable({ // apply filterTable to all tables on this page
+            quickList: ['Oʻahu', 'Hawaiʻi', 'university', 'college', 'neighbor island'] // add some shortcut searches
+        });
+    });
+    </script>
 </body>
 </html>
