@@ -1,0 +1,36 @@
+<!-- $title = jQuery.FilterTable Sample With an Existing Input -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><!--$title--></title>
+    <style>
+    /* generic table styling */
+    table { border-collapse: collapse; }
+    th, td { padding: 5px; }
+    th { border-bottom: 2px solid #999; background-color: #eee; vertical-align: bottom; }
+    td { border-bottom: 1px solid #ccc; }
+
+    /* filter-table specific styling */
+    td.alt { background-color: #ffc; background-color: rgba(255, 255, 0, 0.2); }
+
+    /* special filter field styling for this example */
+    .input-filter-container { position: fixed; top: 1em; right: 1em; border: 2px solid #66f; background-color: #eef; padding: 0.5em; }
+    </style>
+</head>
+<body>
+    <h1><!--$title--></h1>
+    <div class="input-filter-container"><label for="input-filter">Filter the table:</label> <input type="search" id="input-filter" size="15" placeholder="search"></div>
+    <p>This is a sample of the <a href="http://sunnywalker.github.com/jQuery.FilterTable">jQuery.FilterTable plugin</a> which uses an existing element to filter the table instead of creating its own.</p>
+<!-- @import "_presidents-table.html" -->
+<!-- @import "_js-assets.html" -->
+    <script>
+    $(document).ready(function() {
+        $('table').filterTable({ // apply filterTable to all tables on this page
+            filterSelector: '#input-filter' // use the existing input instead of creating a new one
+        });
+    });
+    </script>
+</body>
+</html>

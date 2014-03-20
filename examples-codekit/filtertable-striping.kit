@@ -1,0 +1,39 @@
+<!-- $title = jQuery.FilterTable Striping Sample -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><!--$title--></title>
+    <style>
+    /* generic table styling */
+    table { border-collapse: collapse; }
+    th, td { padding: 5px; }
+    th { border-bottom: 2px solid #999; background-color: #eee; vertical-align: bottom; }
+    td { border-bottom: 1px solid #ccc; }
+
+    /*table.striped tbody tr:nth-child(even) { background-color: #f0f8ff; }*/ /*auto striping gets messed up with hidden rows*/
+    tr.striped { background-color: #f0f8ff; }
+
+    /* filter-table specific styling */
+    td.alt { background-color: #ffc; background-color: rgba(255, 255, 0, 0.2); }
+    </style>
+</head>
+<body>
+    <h1><!--$title--></h1>
+    <p>This is a plain row striping sample of the <a href="http://sunnywalker.github.com/jQuery.FilterTable">jQuery.FilterTable plugin</a>. It shows the code to stripe alternate rows.</p>
+<!-- @import "_presidents-table.html" -->
+<!-- @import "_js-assets.html" -->
+    <script>
+    $(document).ready(function() {
+        var stripeTable = function(table) { //stripe the table (jQuery selector)
+            table.find('tr').removeClass('striped').filter(':visible:even').addClass('striped');
+        };
+        $('table').filterTable({
+            callback: function(term, table) { stripeTable(table); } //call the striping after every change to the filter term
+        });
+        stripeTable($('table')); //stripe the table for the first time
+    });
+    </script>
+</body>
+</html>
