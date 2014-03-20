@@ -39,7 +39,7 @@ $('table').filterTable(); //if this code appears after your tables; otherwise, i
 | `containerTag` | string | p | Tag name of the main filter input container |
 | `hideTFootOnFilter` | boolean | false | Controls whether the table's tfoot(s) will be hidden when the table is filtered |
 | `highlightClass` | string | alt | Class applied to cells containing the filter term |
-| `inputSelector` | string | _null_ | Use this selectors to find the filter input instead of creating a new one (only works if selector returns a single element) |
+| `inputSelector` | string | _null_ | Use this selector to find the filter input instead of creating a new one (only works if selector returns a single element) |
 | `inputName` | string | filter-table | Name attribute of the filter input field |
 | `inputType` | string | search | Tag name of the filter input itself |
 | `label` | string | Filter: | Text to precede the filter input |

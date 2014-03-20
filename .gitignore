@@ -12,3 +12,4 @@ Thumbs.db
 # Codekit files
 config.codekit
 .codekit-cache
+examples-codekit/
