@@ -83,6 +83,10 @@ Other than jQuery, the plugin will take advantage of Brian Grinstead's [bindWith
 
 ## Change Log
 
+### 1.5.3
+
+- **There is a potentially significant change in functionality in this version.** While the documentation offered the `inputSelector` option, within the code it was implemented as `filterSelector`. This has been corrected to match the documentation. Note that if you were previously using the `filterSelector` option to overcome this issue, you will need to change it to `inputSelector` to use the feature with this version.
+
 ### 1.5.2
 
 - Added an `inputSelector` option, thanks to [Pratik Thakkar](https://github.com/pratikt), which specifies a selector for an existing element to use instead of creating a new filter input field. There are some caveats of which to be aware:

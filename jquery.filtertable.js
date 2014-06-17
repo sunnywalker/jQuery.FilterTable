@@ -6,7 +6,7 @@
  *
  * Utilizes bindWithDelay() if available. https://github.com/bgrins/bindWithDelay
  *
- * @version v1.5.2
+ * @version v1.5.3
  * @author Sunny Walker, swalker@hawaii.edu
  */
 (function($) {
@@ -75,8 +75,8 @@
                 filter = null, // placeholder for the field field DOM node
                 created_filter = true; // was the filter created or chosen from an existing element?
             if (t[0].nodeName==='TABLE' && tbody.length>0 && (settings.minRows===0 || (settings.minRows>0 && tbody.find('tr').length>settings.minRows)) && !t.prev().hasClass(settings.containerClass)) { // only if object is a table and there's a tbody and at least minRows trs and hasn't already had a filter added
-                if (settings.filterSelector && $(settings.filterSelector).length===1) { // use a single existing field as the filter input field
-                    filter = $(settings.filterSelector);
+                if (settings.inputSelector && $(settings.inputSelector).length===1) { // use a single existing field as the filter input field
+                    filter = $(settings.inputSelector);
                     container = filter.parent(); // container to hold the quick list options
                     created_filter = false;
                 } else { // create the filter input field (and container)
