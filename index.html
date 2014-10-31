@@ -166,6 +166,12 @@
 <td>HTML5 placeholder text for the filter input</td>
 </tr>
 <tr>
+<td><code>preventReturnKey</code></td>
+<td>boolean</td>
+<td>true</td>
+<td>Trap the return key in the filter input field to prevent form submission</td>
+</tr>
+<tr>
 <td><code>quickList</code></td>
 <td>array</td>
 <td>[]</td>
@@ -229,6 +235,12 @@
 <p>Other than jQuery, the plugin will take advantage of Brian Grinstead's <a href="https://github.com/bgrins/bindWithDelay">bindWithDelay</a> if it is available.</p>
 
 <h2>Change Log</h2>
+
+<h3>1.5.4</h3>
+<ul>
+<li>Added a return key trap to the input filter field so that pressing return in the field should not submit any forms the table may be within.</li>
+<li>The <code>preventReturnKey</code> option (<code>true</code> by default) has been added to allow you to switch back to the previous behavior of allowing the return key to submit forms.</li>
+</ul>
 
 <h3>1.5.3</h3>
 <ul>
