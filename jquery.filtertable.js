@@ -6,8 +6,9 @@
  *
  * Utilizes bindWithDelay() if available. https://github.com/bgrins/bindWithDelay
  *
- * @version v1.5.3
+ * @version v1.5.4
  * @author Sunny Walker, swalker@hawaii.edu
+ * @license MIT
  */
 (function($) {
     var jversion = $.fn.jquery.split('.'), jmajor = parseFloat(jversion[0]), jminor = parseFloat(jversion[1]);
@@ -36,6 +37,7 @@
                 label:             'Filter:',           // text to precede the filter input tag
                 minRows:           8,                   // don't show the filter on tables with less than this number of rows
                 placeholder:       'search this table', // HTML5 placeholder text for the filter field
+                preventReturnKey:  true,                // prevent the return key in the filter input field from trigger form submits
                 quickList:         [],                  // list of phrases to quick fill the search
                 quickListClass:    'quick',             // class of each quick list item
                 quickListGroupTag: '',                  // tag surrounding quick list items (e.g., ul)
@@ -86,6 +88,14 @@
                     }
                     container.prepend(settings.label+' '); // add the label for the filter field
                     filter = $('<input type="'+settings.inputType+'" placeholder="'+settings.placeholder+'" name="'+settings.inputName+'" />'); // build the filter field
+                    if (settings.preventReturnKey) { // prevent return in the filter field from submitting any forms
+                        filter.on('keydown', function(ev) {
+                            if ((ev.keyCode || ev.which) === 13) {
+                                ev.preventDefault();
+                                return false;
+                            }
+                        });
+                    }
                 }
                 if (settings.autofocus) { // add the autofocus attribute if requested
                     filter.attr('autofocus', true);

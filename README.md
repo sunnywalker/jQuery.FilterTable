@@ -45,6 +45,7 @@ $('table').filterTable(); //if this code appears after your tables; otherwise, i
 | `label` | string | Filter: | Text to precede the filter input |
 | `minRows` | integer | 8 | Only show the filter on tables with this number of rows or more |
 | `placeholder` | string | search this table | HTML5 placeholder text for the filter input |
+| `preventReturnKey` | boolean | true | Trap the return key in the filter input field to prevent form submission |
 | `quickList` | array | [] | List of clickable phrases to quick fill the search |
 | `quickListClass` | string | quick | Class of each quick list item |
 | `quickListGroupTag` | string | '' | Tag name surrounding quick list items (e.g., `ul`) |
@@ -82,6 +83,11 @@ $('table').filterTable({
 Other than jQuery, the plugin will take advantage of Brian Grinstead's [bindWithDelay](https://github.com/bgrins/bindWithDelay) if it is available.
 
 ## Change Log
+
+### 1.5.4
+
+- Added a return key trap to the input filter field so that pressing return in the field should not submit any forms the table may be within.
+- The `preventReturnKey` option (`true` by default) has been added to allow you to switch back to the previous behavior of allowing the return key to submit forms.
 
 ### 1.5.3
 
