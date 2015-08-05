@@ -1,0 +1,25 @@
+{
+    "name": "filterTable",
+    "description": "Live searching/filtering for HTML tables with optional quick search buttons.",
+    "keywords": [
+        "table",
+        "search",
+        "filter"
+    ],
+    "authors": [
+        {
+            "name": "Sunny Walker",
+            "homepage": "http://www.miraclesalad.com/"
+        }
+    ],
+    "license": "MIT",
+    "homepage": "http://sunnywalker.github.io/jQuery.FilterTable/",
+    "dependencies": {
+        "jquery": ">=1.4"
+    },
+    "main": "jquery.filtertable.js",
+    "ignore": [
+        "examples/",
+        "**/.*"
+    ]
+}
