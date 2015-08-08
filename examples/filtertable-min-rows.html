@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery.FilterTable Minimum Rows Sample</title>
+    <link rel="stylesheet" href="samples-styles.css">
+    <style>
+    /* filter table specific styling */
+    td.alt { background-color: #ffc; background-color: rgba(255, 255, 0, 0.2); }
+    </style>
+</head>
+<body>
+    <h1>jQuery.FilterTable Minimum Rows Sample</h1>
+    <p><a href="index.html">&larr; More samples</a></p>
+    <p>This is a sample of the <a href="http://sunnywalker.github.com/jQuery.FilterTable">jQuery.FilterTable plugin</a> which illustrates the <code>minRows</code> option.</p>
+    <h2>Example 1: Mininum Rows Default (8)</h2>
+    <p>By default, the plugin will add filtering only to tables with at least 8 rows in the <code>tbody</code>. In this example, the table has more than the minimum rows, so filtering is added.</p>
+    <table class="example-1">
+        <thead>
+            <tr>
+                <th scope="col">Fruit</th>
+                <th scope="col">Mesocarp Color(s) When Ripe</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>Avocado</td><td>Green</td></tr>
+            <tr><td>Banana</td><td>Yellow</td></tr>
+            <tr><td>Dragon fruit</td><td>Pink, White</td></tr>
+            <tr><td>Guava</td><td>Pink</td></tr>
+            <tr><td>Lilikoʻi (Passion fruit)</td><td>Orange, Yellow</td></tr>
+            <tr><td>Lychee</td><td>White</td></tr>
+            <tr><td>Mango</td><td>Orange, Yellow</td></tr>
+            <tr><td>Papaya</td><td>Orange, Red, Yellow</td></tr>
+            <tr><td>Pineapple</td><td>White, Yellow</td></tr>
+            <tr><td>Star fruit</td><td>Green, White, Yellow</td></tr>
+        </tbody>
+    </table>
+    <h3>Code</h3>
+    <pre>$('.example-1').filterTable();</pre>
+
+    <h2>Example 2: Mininum Rows Default (8) on a Small Table</h2>
+    <p>By default, the plugin will add filtering only to tables with at least 8 rows in the <code>tbody</code>. On a table with fewer than this minimum, no filtering is added.</p>
+    <table class="example-2">
+        <thead>
+            <tr>
+                <th scope="col">Fruit</th>
+                <th scope="col">Mesocarp Color(s) When Ripe</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>Avocado</td><td>Green</td></tr>
+            <tr><td>Banana</td><td>Yellow</td></tr>
+            <tr><td>Mango</td><td>Orange, Yellow</td></tr>
+            <tr><td>Papaya</td><td>Orange, Red, Yellow</td></tr>
+            <tr><td>Pineapple</td><td>White, Yellow</td></tr>
+        </tbody>
+    </table>
+    <h3>Code</h3>
+    <pre>$('.example-2').filterTable();</pre>
+
+    <h2>Example 3: Mininum Rows 0 on a Small Table</h2>
+    <p>Setting the <code>minRows</code> option to <code>0</code> will always add filtering to a table, no matter how many rows the <code>tbody</code> contains.</p>
+    <table class="example-3">
+        <thead>
+            <tr>
+                <th scope="col">Fruit</th>
+                <th scope="col">Mesocarp Color(s) When Ripe</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>Avocado</td><td>Green</td></tr>
+            <tr><td>Banana</td><td>Yellow</td></tr>
+            <tr><td>Mango</td><td>Orange, Yellow</td></tr>
+            <tr><td>Papaya</td><td>Orange, Red, Yellow</td></tr>
+            <tr><td>Pineapple</td><td>White, Yellow</td></tr>
+        </tbody>
+    </table>
+    <h3>Code</h3>
+    <pre>$('.example-3').filterTable({
+    minRows: 0
+});</pre>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="../jquery.filtertable.min.js"></script>
+    <script>
+    $(document).ready(function() {
+        $('.example-1').filterTable(); // default on big table
+        $('.example-2').filterTable(); // default on small table
+        $('.example-3').filterTable({minRows: 0}); // 0 minRows on small table
+    });
+    </script>
+</body>
+</html>

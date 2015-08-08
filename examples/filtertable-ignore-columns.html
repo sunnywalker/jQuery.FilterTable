@@ -3,21 +3,27 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>jQuery.FilterTable Sample With an Existing Input</title>
+    <title>jQuery.FilterTable Ignore Columns Samples</title>
     <link rel="stylesheet" href="samples-styles.css">
     <style>
     /* filter table specific styling */
     td.alt { background-color: #ffc; background-color: rgba(255, 255, 0, 0.2); }
 
-    /* special filter field styling for this example */
-    .input-filter-container { position: fixed; top: 1em; right: 1em; border: 2px solid #f60; background-color: #fed; padding: 0.5em; border-radius: 4px; }
+    /* style ignored columns */
+    tr > td:nth-child(1), tr > td:nth-child(3) { color: #999; }
     </style>
 </head>
 <body>
-    <h1>jQuery.FilterTable Sample With an Existing Input</h1>
+    <h1>jQuery.FilterTable Ignore Columns Sample</h1>
     <p><a href="index.html">&larr; More samples</a></p>
-    <div class="input-filter-container"><label for="input-filter">Filter the table:</label> <input type="search" id="input-filter" size="15" placeholder="search"></div>
-    <p>This is a sample of the <a href="http://sunnywalker.github.com/jQuery.FilterTable">jQuery.FilterTable plugin</a> which uses an existing element to filter the table instead of creating its own.</p>
+    <p>This is a sample of the <a href="http://sunnywalker.github.com/jQuery.FilterTable">jQuery.FilterTable plugin</a> using the <code>ignoreColumns</code> option.</p>
+    <p>In this sample, columns the first and third columns (0 and 2) are ignored—not filtered. Also in this sample, the ignored columns are styled via CSS to help identify that they are ignored.</p>
+    <p>For example:</p>
+    <ul>
+        <li>Search for “<a href="#" class="fill-filter" data-table="#example-1">17</a>” and note that president #17 from the first column is not also highlighted.</li>
+        <li>Search for “<a href="#" class="fill-filter" data-table="#example-1">al</a>” and note that every president with “partial” is not also highlighted because the terms column is ignored by the filtering.</li>
+        <li>Search for “<a href="#" class="fill-filter" data-table="#example-1">one</a>” and note that none are highlighted because the terms column is ignored by the filtering.</li>
+    </ul>
     <h2>Presidents of the United States of America</h2>
     <table>
         <thead>
@@ -78,16 +84,16 @@
     <p><em>Data as of October, 2012.</em></p>
     <h2>Code</h2>
     <pre>$('table').filterTable({
-    inputSelector: '#input-filter'
+    ignoreColumns: [0, 2]
 });</pre>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="../jquery.filtertable.min.js"></script>
     <script>
     $(document).ready(function() {
-        $('table').filterTable({ // apply filterTable to all tables on this page
-            inputSelector: '#input-filter' // use the existing input instead of creating a new one
-        });
+        // apply filterTable to all tables on this page but don't filter content from columns 0 and 2 (first and third columns)
+        $('table').filterTable({ignoreColumns: [0, 2]});
     });
     </script>
+    <script src="samples-common.js"></script><!-- this is only needed for the sample page and not for your projects -->
 </body>
 </html>

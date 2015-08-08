@@ -4,22 +4,20 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>jQuery.FilterTable Striping Sample</title>
+    <link rel="stylesheet" href="samples-styles.css">
     <style>
-    /* generic table styling */
-    table { border-collapse: collapse; }
-    th, td { padding: 5px; }
-    th { border-bottom: 2px solid #999; background-color: #eee; vertical-align: bottom; }
-    td { border-bottom: 1px solid #ccc; }
-
-    /*table.striped tbody tr:nth-child(even) { background-color: #f0f8ff; }*/ /*auto striping gets messed up with hidden rows*/
+    /* Note: auto striping with CSS as below gets messed up with hidden rows. */
+    /* table.striped tbody tr:nth-child(even) { background-color: #f0f8ff; } */
+    /* Instead, we're using JavaScript to add the striping. */
     tr.striped { background-color: #f0f8ff; }
 
-    /* filter-table specific styling */
+    /* filter table specific styling */
     td.alt { background-color: #ffc; background-color: rgba(255, 255, 0, 0.2); }
     </style>
 </head>
 <body>
     <h1>jQuery.FilterTable Striping Sample</h1>
+    <p><a href="index.html">&larr; More samples</a></p>
     <p>This is a plain row striping sample of the <a href="http://sunnywalker.github.com/jQuery.FilterTable">jQuery.FilterTable plugin</a>. It shows the code to stripe alternate rows.</p>
     <h2>Presidents of the United States of America</h2>
     <table>
@@ -79,7 +77,15 @@
         </tbody>
     </table>
     <p><em>Data as of October, 2012.</em></p>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <h2>Code</h2>
+    <pre>var stripeTable = function(table) { //stripe the table (jQuery selector)
+    table.find('tr').removeClass('striped').filter(':visible:even').addClass('striped');
+};
+$('table').filterTable({
+    callback: function(term, table) { stripeTable(table); } //call the striping after every change to the filter term
+});
+stripeTable($('table')); //stripe the table for the first time</pre>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="../jquery.filtertable.min.js"></script>
     <script>
     $(document).ready(function() {

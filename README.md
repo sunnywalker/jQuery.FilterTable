@@ -39,10 +39,13 @@ $('table').filterTable(); //if this code appears after your tables; otherwise, i
 | `containerTag` | string | p | Tag name of the main filter input container |
 | `hideTFootOnFilter` | boolean | false | Controls whether the table's tfoot(s) will be hidden when the table is filtered |
 | `highlightClass` | string | alt | Class applied to cells containing the filter term |
+| `ignoreClass` | string | '' | Ignore any cells with this class when filtering |
+| `ignoreColumns` | array | [] | Ignore these columns (0-indexed) when filtering |
 | `inputSelector` | string | _null_ | Use this selector to find the filter input instead of creating a new one (only works if selector returns a single element) |
 | `inputName` | string | filter-table | Name attribute of the filter input field |
 | `inputType` | string | search | Tag name of the filter input itself |
 | `label` | string | Filter: | Text to precede the filter input |
+| `minChars` | integer | 1 | Filter only when at least this number of characters are in the filter input field |
 | `minRows` | integer | 8 | Only show the filter on tables with this number of rows or more |
 | `placeholder` | string | search this table | HTML5 placeholder text for the filter input |
 | `preventReturnKey` | boolean | true | Trap the return key in the filter input field to prevent form submission |
@@ -83,6 +86,19 @@ $('table').filterTable({
 Other than jQuery, the plugin will take advantage of Brian Grinstead's [bindWithDelay](https://github.com/bgrins/bindWithDelay) if it is available.
 
 ## Change Log
+
+### 1.5.5
+
+- The filtering should now trigger automatically on input on iOS. For some reason, Safari iOS triggers a `blur` event on field change but not `keyup` or other related events.
+- A new feature for extending the plugin (option `filterExpression`) has been added. The default is unchanged—the literal filter string.
+    - To search for _any_ of multiple terms, set `filterExpression` to `filterTableFindAny` to perform an OR search which delimits on space or comma characters in the filter field. Thank you to [Lukas](https://github.com/superlukas) for the implementation. An example page is included.
+    - To search for _all_ of multiple terms, set `filterExpression` to `filterTableFindAll` to perform an AND search which delimits on space or comma characters in the filter field. Note that the matching is per-cell not per row, so each cell must have all terms to match. An example page is included.
+- A new feature for ignoring columns is available via the `ignoreColumns` option. Provide an array of column numbers (0-indexed) to ignore those columns during filtering. The default is no columns are ignored. An example page is included.
+- A new feature for ignoring cells with a specific class is available via the `ignoreClass` option. Provide a class name to ignore those cells during filtering. The default is no classes are ignored. An exampled page is included. Thanks to [geda0](https://github.com/geda0) for the idea.
+- Added a `minChars` option, thanks to [Darius Kazemi](https://github.com/dariusk), which specifies the minimum number of characters a user must enter into the filter field before filtering occurs. Default is 1, meaning the moment the user begins to type, filtering will occur.
+- Merged [Pierre Rudloff](https://github.com/Rudloff)’s Bower support.
+- Merged [Jason](https://github.com/deadbeef404)’s `minRows` bug fix.
+- Added an FAQ file.
 
 ### 1.5.4
 
