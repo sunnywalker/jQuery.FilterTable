@@ -10,3 +10,5 @@ The plugin will not show for tables with fewer than `8` rows by default. To have
 
     $('table').filterTable({minRows: 0});
 
+Or see the [minRows example page](http://sunnywalker.github.io/jQuery.FilterTable/examples/filtertable-min-rows.html).
+
