@@ -4,12 +4,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>jQuery.FilterTable Quick List Sample</title>
+    <link rel="stylesheet" href="samples-styles.css">
     <style>
     /* generic table styling */
-    table { border-collapse: collapse; }
-    th, td { padding: 5px; }
-    th { border-bottom: 2px solid #999; background-color: #eee; vertical-align: bottom; }
-    td { border-bottom: 1px solid #ccc; }
     table a { text-decoration: none; }
     table a:hover { text-decoration: underline; }
     tr :last-child { text-align: right; }
@@ -17,7 +14,7 @@
     /* hide content from view but not from searching */
     .hidden { display: none; }
 
-    /* filter-table specific styling */
+    /* filter table specific styling */
     .filter-table .quick { margin-left: 1em; font-size: 0.8em; text-decoration: none; }
     .fitler-table .quick:hover { text-decoration: underline; }
     td.alt { background-color: #ffc; background-color: rgba(255, 255, 0, 0.2); }
@@ -25,7 +22,9 @@
 </head>
 <body>
     <h1>jQuery.FilterTable Quick List Sample</h1>
-    <p>This is a very plain sample of the <a href="http://sunnywalker.github.com/jQuery.FilterTable">jQuery.FilterTable plugin</a> which shows the usage of the <code>quickList</code> optional parameter.</p>
+    <p><a href="index.html">&larr; More samples</a></p>
+    <p>This is a sample of the <a href="http://sunnywalker.github.com/jQuery.FilterTable">jQuery.FilterTable plugin</a> which shows the usage of the <code>quickList</code> optional parameter.</p>
+    <p>Note that the “neighbor island” quick list item works because within some cells exists code that is hidden with CSS: <code>&lt;span class=&quot;hidden&quot;&gt;neighbor island&lt;/span&gt;</code>.</p>
     <h2>Main campuses of the University of Hawai&#699;i System</h2>
     <table>
         <thead>
@@ -89,12 +88,24 @@
         </tbody>
     </table>
     <p>Note that while the filter is case-insensitive, it is UTF-8 aware so searching for <code>oahu</code> will not find <code>O&#699;ahu</code>.</p>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-    <script src="jquery.filtertable.min.js"></script>
+
+    <h2>Code</h2>
+    <pre>$('table').filterTable({
+    quickList: quickList: [
+        'Oʻahu',
+        'Hawaiʻi',
+        'university',
+        'college',
+        'neighbor island'
+    ]
+});</pre>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="../jquery.filtertable.min.js"></script>
     <script>
     $(document).ready(function() {
-        $('table').filterTable({
-            quickList: ['Oʻahu', 'Hawaiʻi', 'university', 'college', 'neighbor island']
+        $('table').filterTable({ // apply filterTable to all tables on this page
+            quickList: ['Oʻahu', 'Hawaiʻi', 'university', 'college', 'neighbor island'] // add some shortcut searches
         });
     });
     </script>

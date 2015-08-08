@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery.FilterTable Ignore a Class Sample</title>
+    <link rel="stylesheet" href="samples-styles.css">
+    <style>
+    /* filter table specific styling */
+    td.alt { background-color: #ffc; background-color: rgba(255, 255, 0, 0.2); }
+
+    /* style ignored class */
+    .no-filter { color: #999; }
+    </style>
+</head>
+<body>
+    <h1>jQuery.FilterTable Ignore a Class Sample</h1>
+    <p><a href="index.html">&larr; More samples</a></p>
+    <h2>Ignore a Class</h2>
+    <p>This is a sample of the <a href="http://sunnywalker.github.com/jQuery.FilterTable">jQuery.FilterTable plugin</a> using the <code>ignoreClass</code> option.</p>
+    <p>In this sample, cells with the <code>no-filter</code> class are ignored—not filtered. Also in this sample, the ignored cells are styled via CSS to help identify that they are ignored.</p>
+    <p>For example:</p>
+    <ul>
+        <li>Search for “<a href="#" class="fill-filter">pink</a>” and note that neither “dragon fruit” nor “guava” are highlighted because both cells with pink have the <code>no-filter</code> class.</li>
+        <li>Search for “<a href="#" class="fill-filter">white</a>” and note that while “dragon fruit” has “white” in its row, it is not highlighted because the cell with “white” has the ignored <code>no-filter</code> class.</li>
+        <li>Search for “<a href="#" class="fill-filter">fruit</a>” and note that only “dragon fruit” is highlighted because “star fruit” and “lilikoʻi (passion fruit)” have the ignored <code>no-filter</code> class.</li>
+    </ul>
+    <table>
+        <thead>
+            <tr>
+                <th scope="col">Fruit</th>
+                <th scope="col">Mesocarp Color(s) When Ripe</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>Avocado</td><td>Green</td></tr>
+            <tr><td>Banana</td><td>Yellow</td></tr>
+            <tr><td>Dragon fruit</td><td class="no-filter">Pink, White</td></tr>
+            <tr><td>Guava</td><td class="no-filter">Pink</td></tr>
+            <tr><td class="no-filter">Lilikoʻi (Passion fruit)</td><td>Orange, Yellow</td></tr>
+            <tr><td>Lychee</td><td>White</td></tr>
+            <tr><td>Mango</td><td>Orange, Yellow</td></tr>
+            <tr><td>Papaya</td><td>Orange, Red, Yellow</td></tr>
+            <tr><td>Pineapple</td><td>White, Yellow</td></tr>
+            <tr><td class="no-filter">Star fruit</td><td>Green, White, Yellow</td></tr>
+        </tbody>
+    </table>
+    <h2>Code</h2>
+    <pre>$('table').filterTable({
+    ignoreClass: 'no-filter'
+});</pre>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="../jquery.filtertable.min.js"></script>
+    <script>
+    $(document).ready(function() {
+        // apply filterTable to all tables on this page but don't filter content with the no-filter class
+        $('table').filterTable({ignoreClass: 'no-filter'});
+    });
+    </script>
+    <script src="samples-common.js"></script><!-- this is only needed for the sample page and not for your projects -->
+</body>
+</html>

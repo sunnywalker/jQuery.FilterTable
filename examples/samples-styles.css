@@ -1,0 +1,24 @@
+/*
+These styles are for the sample pages,
+and have no impact on the use or functionality
+of the jQuery Filter Table Plugin.
+
+Plugin related styling is contained within
+each sample page.
+*/
+
+/* generic page styling */
+* { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
+body { -webkit-font-smoothing: antialiased; font-family: "Helvetica Neue", sans-serif; font-size: 100%; margin: 0 auto; max-width: 40em; padding-bottom: 3em; }
+pre, code { background-color: rgba(0, 0, 0, 0.04); padding: 0.2em 0; margin: 0; font-size: 85%; border-radius: 3px; font-family: Consolas, Menlo, monospace; }
+pre { white-space: pre-wrap; }
+
+h2 { margin-top: 1em; padding-top: 1em; border-top: 2px solid #eee; }
+
+li { margin-bottom: 0.5em; }
+
+/* generic table styling */
+table { border-collapse: collapse; width: 100%; }
+th, td { padding: 5px; }
+th { border-bottom: 2px solid #999; background-color: #eee; vertical-align: bottom; text-align: left; }
+td { border-bottom: 1px solid #ccc; }

@@ -1,44 +1,44 @@
 <!doctype html>
 <html>
   <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="chrome=1">
-	<title>jQuery.FilterTable by sunnywalker</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>jQuery.FilterTable by sunnywalker</title>
 
-	<link rel="stylesheet" href="stylesheets/styles.css">
-	<link rel="stylesheet" href="stylesheets/pygment_trac.css">
-	<script src="javascripts/scale.fix.js"></script>
-	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
-	<!--[if lt IE 9]>
-	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-	<![endif]-->
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-	<script src="jquery.filtertable.min.js"></script>
-	<script>
-	$(document).ready(function(){
-		$('table').filterTable({quickList:['class','tag','quick']});
-	});
-	</script>
-	<style>
-	.filter-table .quick { margin-left: 0.5em; font-size: 0.8em; text-decoration: none; }
-	td.alt { background-color: #ffc; background-color: rgba(255, 255, 0, 0.2); }
-	</style>
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="jquery.filtertable.min.js"></script>
+    <script>
+    $(document).ready(function(){
+        $('table').filterTable({quickList:['class','tag','quick']});
+    });
+    </script>
+    <style>
+    .filter-table .quick { margin-left: 0.5em; font-size: 0.8em; text-decoration: none; }
+    td.alt { background-color: #ffc; background-color: rgba(255, 255, 0, 0.2); }
+    </style>
   </head>
   <body>
-	<div class="wrapper">
-	  <header>
-		<h1>jQuery.FilterTable</h1>
-		<p>Live searching/filtering for HTML tables in a jQuery plugin</p>
-		<p class="view"><a href="https://github.com/sunnywalker/jQuery.FilterTable">View the Project on GitHub <small>sunnywalker/jQuery.FilterTable</small></a></p>
-		<ul>
-		  <li><a href="https://github.com/sunnywalker/jQuery.FilterTable/zipball/master">Download <strong>ZIP File</strong></a></li>
-		  <li><a href="https://github.com/sunnywalker/jQuery.FilterTable/tarball/master">Download <strong>TAR Ball</strong></a></li>
-		  <li><a href="https://github.com/sunnywalker/jQuery.FilterTable">View On <strong>GitHub</strong></a></li>
-		</ul>
-	  </header>
-	  <section>
-		<h1>jQuery Filter Table Plugin</h1>
+    <div class="wrapper">
+      <header>
+        <h1>jQuery.FilterTable</h1>
+        <p>Live searching/filtering for HTML tables in a jQuery plugin</p>
+        <p class="view"><a href="https://github.com/sunnywalker/jQuery.FilterTable">View the Project on GitHub <small>sunnywalker/jQuery.FilterTable</small></a></p>
+        <ul>
+          <li><a href="https://github.com/sunnywalker/jQuery.FilterTable/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/sunnywalker/jQuery.FilterTable/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/sunnywalker/jQuery.FilterTable">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>jQuery Filter Table Plugin</h1>
 
 <p>This plugin will add a search filter to tables. When typing in the filter, any rows that do not contain the filter will be hidden.</p>
 
@@ -48,13 +48,7 @@
 
 <p>The <a href="#options">Options</a> table below has <code>filterTable({quickList:['class','tag']})</code> applied to it.</p>
 
-<p>Here are some bare-bones samples:</p>
-<ul>
-	<li><a href="filtertable-sample.html">Plain sample</a></li>
-	<li><a href="filtertable-quick.html">Quick List sample</a></li>
-    <li><a href="filtertable-striping.html">Row Striping sample</a></li>
-	<li><a href="filtertable-existing-input.html">Sample with an existing input for filtering</a></li>
-</ul>
+<p>Here are some <a href="examples/">bare-bones samples</a>.</p>
 
 <h2>Usage</h2>
 
@@ -128,6 +122,18 @@
 <td>string</td>
 <td>alt</td>
 <td>Class applied to cells containing the filter term</td>
+</tr>
+<tr>
+<td><code>ignoreClass</code></td>
+<td>string</td>
+<td>''</td>
+<td>Ignore any cells with this class when filtering</td>
+</tr>
+<tr>
+<td><code>ignoreColumns</code></td>
+<td>array</td>
+<td>[]</td>
+<td>Ignore these columns (0-indexed) when filtering</td>
 </tr>
 <tr>
 <td><code>inputSelector</code></td>
@@ -236,6 +242,22 @@
 
 <h2>Change Log</h2>
 
+<h3>1.5.5</h3>
+<ul>
+<li>The filtering should now trigger automatically on input on iOS. For some reason, Safari iOS triggers a <code>blur</code> event on field change but not <code>keyup</code> or other related events.</li>
+<li>A new feature for extending the plugin (option <code>filterExpression</code>) has been added. The default is unchanged—the literal filter string.
+<ul>
+<li>To search for <em>any</em> of multiple terms, set <code>filterExpression</code> to <code>filterTableFindAny</code> to perform an OR search which delimits on space or comma characters in the filter field. Thank you to <a href="https://github.com/superlukas">Lukas</a> for the implementation. An example page is included.</li>
+<li>To search for <em>all</em> of multiple terms, set <code>filterExpression</code> to <code>filterTableFindAll</code> to perform an AND search which delimits on space or comma characters in the filter field. Note that the matching is per-cell not per row, so each cell must have all terms to match. An example page is included.</li>
+</ul></li>
+<li>A new feature for ignoring columns is available via the <code>ignoreColumns</code> option. Provide an array of column numbers (0-indexed) to ignore those columns during filtering. The default is no columns are ignored. An example page is included.</li>
+<li>A new feature for ignoring cells with a specific class is available via the <code>ignoreClass</code> option. Provide a class name to ignore those cells during filtering. The default is no classes are ignored. An exampled page is included. Thanks to <a href="https://github.com/geda0">geda0</a> for the idea.</li>
+<li>Added a <code>minChars</code> option, thanks to <a href="https://github.com/dariusk">Darius Kazemi</a>, which specifies the minimum number of characters a user must enter into the filter field before filtering occurs. Default is 1, meaning the moment the user begins to type, filtering will occur.</li>
+<li>Merged <a href="https://github.com/Rudloff">Pierre Rudloff</a>’s Bower support.</li>
+<li>Merged <a href="https://github.com/deadbeef404">Jason</a>’s <code>minRows</code> bug fix.</li>
+<li>Added an FAQ file.</li>
+</ul>
+
 <h3>1.5.4</h3>
 <ul>
 <li>Added a return key trap to the input filter field so that pressing return in the field should not submit any forms the table may be within.</li>
@@ -312,13 +334,13 @@
 <p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
 
 <p>THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
-	  </section>
-	</div>
-	<footer>
-	  <p>Project maintained by <a href="https://github.com/sunnywalker">sunnywalker</a></p>
-	  <p>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></p>
-	</footer>
-	<!--[if !IE]><script>fixScale(document);</script><![endif]-->
+      </section>
+    </div>
+    <footer>
+      <p>Project maintained by <a href="https://github.com/sunnywalker">sunnywalker</a></p>
+      <p>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></p>
+    </footer>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
 
   </body>
 </html>
