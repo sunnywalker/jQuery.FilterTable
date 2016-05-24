@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>jQuery.FilterTable FAQ</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1><a href="http://sunnywalker.github.io/jQuery.FilterTable/">jQuery.FilterTable</a></h1>
+        <p>Live searching/filtering for HTML tables in a jQuery plugin</p>
+        <p class="view"><a href="https://github.com/sunnywalker/jQuery.FilterTable">View the Project on GitHub <small>sunnywalker/jQuery.FilterTable</small></a></p>
+        <ul>
+          <li><a href="https://github.com/sunnywalker/jQuery.FilterTable/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/sunnywalker/jQuery.FilterTable/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/sunnywalker/jQuery.FilterTable">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>jQuery.filterTable Frequently Asked Questions</h1>
+
+<h2>How do I keep the header and/or footer rows from disappearing on filter?</h2>
+
+<p>Ensure your header row(s) are in <code>&lt;thead&gt;&lt;/thead&gt;</code> tags, your data row(s) are in <code>&lt;tbody&gt;&lt;/tbody&gt;</code> tags, and your footer row(s) are in <code>&lt;tfoot&gt;&lt;/tfoot&gt;</code> tags. The plugin only filters <code>tbody</code> rows, but if you do not specify <code>thead</code>, <code>tbody</code>, <code>tfoot</code>, the brower puts all of your rows in a <code>tbody</code> block.</p>
+
+<h2>Why isn't the filtering showing up on small tables?</h2>
+
+<p>The plugin will not show for tables with fewer than <code>8</code> rows by default. To have the filter feature always appear, set the <code>minRows</code> option accordingly. For example:</p>
+
+<div class="highlight"><pre><span class="nt">&lt;script&gt;</span>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'table'</span><span class="p">).</span><span class="nx">filterTable</span><span class="p">({</span><span class="nx">minRows</span><span class="o">:</span> <span class="m">0</span><span class="p">});</span>
+<span class="nt">&lt;/script&gt;</span>
+</pre></div>
+
+<p>Or see the <a href="examples/filtertable-min-rows.html">minRows example page</a>.</p>
+
+      </section>
+    </div>
+    <footer>
+      <p>Project maintained by <a href="https://github.com/sunnywalker">sunnywalker</a></p>
+      <p>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></p>
+    </footer>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+
+  </body>
+</html>

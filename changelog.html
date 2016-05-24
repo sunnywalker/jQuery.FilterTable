@@ -1,0 +1,128 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>jQuery.FilterTable Change Log</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>jQuery.FilterTable</h1>
+        <p>Live searching/filtering for HTML tables in a jQuery plugin</p>
+        <p class="view"><a href="https://github.com/sunnywalker/jQuery.FilterTable">View the Project on GitHub <small>sunnywalker/jQuery.FilterTable</small></a></p>
+        <ul>
+          <li><a href="https://github.com/sunnywalker/jQuery.FilterTable/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/sunnywalker/jQuery.FilterTable/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/sunnywalker/jQuery.FilterTable">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>jQuery.filterTable Change Log</h1>
+
+<h2>1.5.6</h2>
+<ul>
+<li>Fixed filtering to work for special characters <coode>'</coode>, <code>&quot;</code>, and <code>\</code>.</li>
+<li>Minor documentation updates.</li>
+</ul>
+
+<h2>1.5.5</h2>
+<ul>
+<li>The filtering should now trigger automatically on input on iOS. For some reason, Safari iOS triggers a <code>blur</code> event on field change but not <code>keyup</code> or other related events.</li>
+<li>A new feature for extending the plugin (option <code>filterExpression</code>) has been added. The default is unchanged—the literal filter string.
+<ul>
+<li>To search for <em>any</em> of multiple terms, set <code>filterExpression</code> to <code>filterTableFindAny</code> to perform an OR search which delimits on space or comma characters in the filter field. Thank you to <a href="https://github.com/superlukas">Lukas</a> for the implementation. An example page is included.</li>
+<li>To search for <em>all</em> of multiple terms, set <code>filterExpression</code> to <code>filterTableFindAll</code> to perform an AND search which delimits on space or comma characters in the filter field. Note that the matching is per-cell not per row, so each cell must have all terms to match. An example page is included.</li>
+</ul></li>
+<li>A new feature for ignoring columns is available via the <code>ignoreColumns</code> option. Provide an array of column numbers (0-indexed) to ignore those columns during filtering. The default is no columns are ignored. An example page is included.</li>
+<li>A new feature for ignoring cells with a specific class is available via the <code>ignoreClass</code> option. Provide a class name to ignore those cells during filtering. The default is no classes are ignored. An exampled page is included. Thanks to <a href="https://github.com/geda0">geda0</a> for the idea.</li>
+<li>Added a <code>minChars</code> option, thanks to <a href="https://github.com/dariusk">Darius Kazemi</a>, which specifies the minimum number of characters a user must enter into the filter field before filtering occurs. Default is 1, meaning the moment the user begins to type, filtering will occur.</li>
+<li>Merged <a href="https://github.com/Rudloff">Pierre Rudloff</a>’s Bower support.</li>
+<li>Merged <a href="https://github.com/deadbeef404">Jason</a>’s <code>minRows</code> bug fix.</li>
+<li>Added an FAQ file.</li>
+</ul>
+
+<h2>1.5.4</h2>
+<ul>
+<li>Added a return key trap to the input filter field so that pressing return in the field should not submit any forms the table may be within.</li>
+<li>The <code>preventReturnKey</code> option (<code>true</code> by default) has been added to allow you to switch back to the previous behavior of allowing the return key to submit forms.</li>
+</ul>
+
+<h2>1.5.3</h2>
+<ul>
+<li><strong>There is a potentially significant change in functionality in this version.</strong> While the documentation offered the <code>inputSelector</code> option, within the code it was implemented as <code>filterSelector</code>. This has been corrected to match the documentation. Note that if you were previously using the <code>filterSelector</code> option to overcome this issue, you will need to change it to <code>inputSelector</code> to use the feature with this version.
+</li>
+</ul>
+
+<h2>1.5.2</h2>
+<ul>
+<li>Added an <code>inputSelector</code> option, thanks to <a href="https://github.com/pratikt">Pratik Thakkar</a>, which specifies a selector for an existing element to use instead of creating a new filter input field. There are some caveats of which to be aware:
+<ul>
+<li>If the element doesn't exist, a filter input field will be created as normal.</li>
+<li>Because of quick lists and other options, this setting will be ignored and the filter input field will be created as normal if the resolution of the <code>inputSelector</code> returns more than one element.</li>
+</ul>
+</li>
+</ul>
+
+<h2>1.5.1</h2>
+<ul>
+<li>Added an <code>autofocus</code> option, thanks to <a href="https://github.com/penguinpowernz">Robert McLeod</a>, which is disabled by default. Note that autofocus is generally a bad idea for accessibility reasons, but if you do not need to be compliant or don't want to support accessibility users, it's a nice user experience option.</li>
+</ul>
+
+<h2>1.5</h2>
+<ul>
+<li><strong>There is a potentially significant change in functionality in this version.</strong> The callback is now called every time the search query changes. Previously it was only called when the change was a non-empty query. That is, the callback is now called when the query is cleared too.</li>
+<li>Additional features have been taken from <a href="https://github.com/tomasc">Tomas Celizna</a>'s CoffeeScript-based fork:
+<ul>
+<li>The quick list items can now be something other than anchor tags. See the <code>quickListTag</code> and <code>quickListGroupTag</code> options.</li>
+<li>The filter query field can now have a name attribute assigned to it. See the <code>inputName</code> option.</li>
+<li>The class applied to visible rows is now user changeable. See the <code>visibleClass</code> option.</li>
+<li>The options in the documentation have been ordered alphabetically for easier scanning.</li>
+</ul>
+</li>
+<li>The internal pseudo selector is now created appropriately according to the jQuery version. (Pseudo selector generation changed in jQuery 1.8)</li>
+</ul>
+
+<h2>1.4</h2>
+<ul>
+<li>Fixed a bug with filtering rarely showing rows that did not have a match with the search query.</li>
+<li>Added example pages.</li>
+<li>Improved inline documentation of the source code.</li>
+</ul>
+
+<h2>1.3.1 (in spirit)</h2>
+<ul>
+<li>Added minified version of the plugin (thanks <a href="https://github.com/lucanos">Luke Stevenson</a>).</li>
+</ul>
+
+<h2>1.3</h2>
+<ul><li>The functionality is not reapplied to tables that have already been processed. This allows you to call <code>$(selector).filterTable()</code> again for dynamically created data without it affecting previously filtered tables.</li></ul>
+
+<h2>1.2</h2>
+<ul>
+<li>Changed the default container class to <code>filter-table</code> from <code>table-filter</code> to be consistent with the plugin name.</li>
+<li>Made the cell highlighting class an option rather than hard-coded.</li>
+</ul>
+
+<h2>1.1</h2>
+<ul><li>Initial public release.</li></ul>
+
+      </section>
+    </div>
+    <footer>
+      <p>Project maintained by <a href="https://github.com/sunnywalker">sunnywalker</a></p>
+      <p>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></p>
+    </footer>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+
+  </body>
+</html>
