@@ -6,7 +6,7 @@
  *
  * Utilizes bindWithDelay() if available. https://github.com/bgrins/bindWithDelay
  *
- * @version v1.5.5
+ * @version v1.5.6
  * @author Sunny Walker, swalker@hawaii.edu
  * @license MIT
  */
@@ -16,7 +16,7 @@
         jminor = parseFloat(jversion[1]);
     if (jmajor < 2 && jminor < 8) { // build the pseudo selector for jQuery < 1.8
         $.expr[':'].filterTableFind = function(a, i, m) { // build the case insensitive filtering functionality as a pseudo-selector expression
-            return $(a).text().toUpperCase().indexOf(m[3].toUpperCase()) >= 0;
+            return $(a).text().toUpperCase().indexOf(m[3].toUpperCase().replace(/"""/g, '"').replace(/"\\"/g, "\\")) >= 0;
         };
         $.expr[':'].filterTableFindAny = function(a, i, m) { // build the case insensitive all-words filtering functionality as a pseudo-selector expression
             // build an array of each non-falsey value passed
@@ -35,7 +35,7 @@
             return function(a) {
                 var found = false;
                 $.each(args, function(j, v) {
-                    if ($(a).text().toUpperCase().indexOf(v.toUpperCase()) >= 0) {
+                    if ($(a).text().toUpperCase().indexOf(v.toUpperCase().replace(/"""/g, '"').replace(/"\\"/g, "\\")) >= 0) {
                         found = true;
                         return false;
                     }
@@ -60,7 +60,7 @@
             return function(a) {
                 var found = 0; // how many terms were found?
                 $.each(args, function(j, v) {
-                    if ($(a).text().toUpperCase().indexOf(v.toUpperCase()) >= 0) {
+                    if ($(a).text().toUpperCase().indexOf(v.toUpperCase().replace(/"""/g, '"').replace(/"\\"/g, "\\")) >= 0) {
                         found++; // found another term
                     }
                 });
@@ -70,7 +70,7 @@
     } else { // build the pseudo selector for jQuery >= 1.8
         $.expr[':'].filterTableFind = jQuery.expr.createPseudo(function(arg) {
             return function(el) {
-                return $(el).text().toUpperCase().indexOf(arg.toUpperCase()) >= 0;
+                return $(el).text().toUpperCase().indexOf(arg.toUpperCase().replace(/"""/g, '"').replace(/"\\"/g, "\\")) >= 0;
             };
         });
         $.expr[':'].filterTableFindAny = jQuery.expr.createPseudo(function(arg) {
@@ -90,7 +90,7 @@
             return function(el) {
                 var found = false;
                 $.each(args, function(i, v) {
-                    if ($(el).text().toUpperCase().indexOf(v.toUpperCase()) >= 0) {
+                    if ($(el).text().toUpperCase().indexOf(v.toUpperCase().replace(/"""/g, '"').replace(/"\\"/g, "\\")) >= 0) {
                         found = true;
                         return false; // short-circuit the searching since this cell has one of the terms
                     }
@@ -115,7 +115,7 @@
             return function(el) {
                 var found = 0; // how many terms were found?
                 $.each(args, function(i, v) {
-                    if ($(el).text().toUpperCase().indexOf(v.toUpperCase()) >= 0) {
+                    if ($(el).text().toUpperCase().indexOf(v.toUpperCase().replace(/"""/g, '"').replace(/"\\"/g, "\\")) >= 0) {
                         found++; // found another term
                     }
                 });
@@ -173,7 +173,7 @@
                         if (settings.ignoreClass) {
                             all_tds = all_tds.not('.'+settings.ignoreClass);
                         }
-                        tds = all_tds.filter(':'+settings.filterExpression+'("'+q.replace(/(['"])/g, '\\$1')+'")');
+                        tds = all_tds.filter(':'+settings.filterExpression+'("'+q+'")');
                         tds.each(function() {
                             var t = $(this),
                                 col = t.parent().children().index(t);
@@ -187,7 +187,7 @@
                         if (settings.ignoreClass) {
                             all_tds = all_tds.not('.'+settings.ignoreClass);
                         }
-                        all_tds.filter(':'+settings.filterExpression+'("'+q.replace(/(['"])/g, '\\$1')+'")').addClass(settings.highlightClass).closest('tr').show().addClass(settings.visibleClass); // highlight (class=alt) only the cells that match the query and show their rows
+                        all_tds.filter(':'+settings.filterExpression+'("'+q+'")').addClass(settings.highlightClass).closest('tr').show().addClass(settings.visibleClass); // highlight (class=alt) only the cells that match the query and show their rows
                     }
                 }
                 if (settings.callback) { // call the callback function
