@@ -33,6 +33,8 @@ $('table').filterTable(); //if this code appears after your tables; otherwise, i
 
 Be sure to check the FAQ file for common issues if the plugin does not seem to be working as intended.
 
+Note that the plugin does not work as expected when using cells with `rowspan`.
+
 ## Options
 
 | Option | Type | Default | Description |
