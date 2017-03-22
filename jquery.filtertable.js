@@ -6,7 +6,7 @@
  *
  * Utilizes bindWithDelay() if available. https://github.com/bgrins/bindWithDelay
  *
- * @version v1.5.6
+ * @version v1.5.7
  * @author Sunny Walker, swalker@hawaii.edu
  * @license MIT
  */
@@ -141,70 +141,73 @@
         // start off with some default settings
         var defaults = {
                 // make the filter input field autofocused (not recommended for accessibility)
-                autofocus:         false,
+                autofocus: false,
 
                 // callback function: function (term, table){}
-                callback:          null,
+                callback: null,
 
                 // class to apply to the container
-                containerClass:    'filter-table',
+                containerClass: 'filter-table',
 
                 // tag name of the container
-                containerTag:      'p',
+                containerTag: 'p',
 
                 // jQuery expression method to use for filtering
-                filterExpression:  'filterTableFind',
+                filterExpression: 'filterTableFind',
 
                 // if true, the table's tfoot(s) will be hidden when the table is filtered
                 hideTFootOnFilter: false,
 
                 // class applied to cells containing the filter term
-                highlightClass:    'alt',
+                highlightClass: 'alt',
 
                 // don't filter the contents of cells with this class
-                ignoreClass:       '',
+                ignoreClass: '',
 
                 // don't filter the contents of these columns
-                ignoreColumns:     [],
+                ignoreColumns: [],
 
                 // use the element with this selector for the filter input field instead of creating one
-                inputSelector:     null,
+                inputSelector: null,
 
                 // name of filter input field
-                inputName:         '',
+                inputName: '',
 
                 // tag name of the filter input tag
-                inputType:         'search',
+                inputType: 'search',
 
                 // text to precede the filter input tag
-                label:             'Filter:',
+                label: 'Filter:',
 
                 // filter only when at least this number of characters are in the filter input field
-                minChars:          1,
+                minChars: 1,
 
                 // don't show the filter on tables with at least this number of rows
-                minRows:           8,
+                minRows: 8,
 
                 // HTML5 placeholder text for the filter field
-                placeholder:       'search this table',
+                placeholder: 'search this table',
 
                 // prevent the return key in the filter input field from trigger form submits
-                preventReturnKey:  true,
+                preventReturnKey: true,
 
                 // list of phrases to quick fill the search
-                quickList:         [],
+                quickList: [],
 
                 // class of each quick list item
-                quickListClass:    'quick',
+                quickListClass: 'quick',
+
+                // quick list item label to clear the filter (e.g., '&times; Clear filter')
+                quickListClear: '',
 
                 // tag surrounding quick list items (e.g., ul)
                 quickListGroupTag: '',
 
                 // tag type of each quick list item (e.g., a or li)
-                quickListTag:      'a',
+                quickListTag: 'a',
 
                 // class applied to visible rows
-                visibleClass:      'visible'
+                visibleClass: 'visible'
             },
             // mimic PHP's htmlspecialchars() function
             hsc = function (text) {
@@ -340,7 +343,7 @@
                 }
 
                 // are there any quick list items to add?
-                if (settings.quickList.length > 0) {
+                if (settings.quickList.length > 0 || settings.quickListClear) {
                     quicks = settings.quickListGroupTag ? $('<' + settings.quickListGroupTag + ' />') : container;
                     // for each quick list item...
                     $.each(settings.quickList, function (index, value) {
@@ -362,8 +365,29 @@
                         // add the quick list link to the quick list groups container
                         quicks.append(q);
                     });
+
+                    // add the quick list clear item if a label has been specified
+                    if (settings.quickListClear) {
+                        // build the clear item
+                        var q = $('<' + settings.quickListTag + ' class="' + settings.quickListClass + '" />');
+                        // add the label text
+                        q.html(settings.quickListClear);
+                        if (q[0].nodeName === 'A') {
+                            // add a (worthless) href to the item if it's an anchor tag so that it gets the browser's link treatment
+                            q.attr('href', '#');
+                        }
+                        // bind the click event to it
+                        q.bind('click', function (e) {
+                            e.preventDefault();
+                            // clear the quick list value and trigger the event
+                            filter.val('').focus().trigger('click');
+                        });
+                        // add the clear item to the quick list groups container
+                        quicks.append(q);
+                    }
+
+                    // add the quick list groups container to the DOM if it isn't already there
                     if (quicks !== container) {
-                        // add the quick list groups container to the DOM if it isn't already there
                         container.append(quicks);
                     }
                 }

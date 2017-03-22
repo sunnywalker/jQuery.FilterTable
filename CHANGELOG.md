@@ -1,5 +1,8 @@
 # jQuery.filterTable Change Log
 
+## 1.5.7
+- Support for `quickListClear` option that appends a quick list link which clears the filter.
+
 ## 1.5.6
 - Fixed filtering to work for special characters `'`, `"`, and `\`.
 - Minor documentation updates.

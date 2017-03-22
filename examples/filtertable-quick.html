@@ -36,7 +36,7 @@
         </thead>
         <tbody>
             <tr>
-                <td><a href="http://hilo.hawaii.edu/">University of Hawai&#699;i at Hilo</a></td>
+                <td><a href="https://hilo.hawaii.edu/">University of Hawai&#699;i at Hilo</a></td>
                 <td>Hawai&#699;i <span class="hidden">neighbor island</span></td>
                 <td>4,100</td>
             </tr>
@@ -71,7 +71,7 @@
                 <td>1,400</td>
             </tr>
             <tr>
-                <td><a href="http://leeward.hawaii.edu/">Leeward Community College</a></td>
+                <td><a href="http://www.leeward.hawaii.edu/">Leeward Community College</a></td>
                 <td>O&#699;ahu</td>
                 <td>7,900</td>
             </tr>
@@ -97,7 +97,8 @@
         'university',
         'college',
         'neighbor island'
-    ]
+    ],
+    quickListClear: '&times; clear filter'
 });</pre>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -105,7 +106,8 @@
     <script>
     $(document).ready(function() {
         $('table').filterTable({ // apply filterTable to all tables on this page
-            quickList: ['Oʻahu', 'Hawaiʻi', 'university', 'college', 'neighbor island'] // add some shortcut searches
+            quickList: ['Oʻahu', 'Hawaiʻi', 'university', 'college', 'neighbor island'], // add some shortcut searches
+            quickListClear: '&times; clear filter' // add the clear filter item
         });
     });
     </script>

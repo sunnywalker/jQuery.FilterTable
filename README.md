@@ -57,6 +57,7 @@ Note that the plugin does not work as expected when using cells with `rowspan`.
 | `preventReturnKey` | boolean | true | Trap the return key in the filter input field to prevent form submission |
 | `quickList` | array | [] | List of clickable phrases to quick fill the search |
 | `quickListClass` | string | quick | Class of each quick list item |
+| `quickListClear` | string | '' | Label for the clear filtering quick list item (or none if blank) |
 | `quickListGroupTag` | string | '' | Tag name surrounding quick list items (e.g., `ul`) |
 | `quickListTag` | string | a | Tag name of each quick list item (e.g., `a` or `li`) |
 | `visibleClass` | string | visible | Class applied to visible rows |
