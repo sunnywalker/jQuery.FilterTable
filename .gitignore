@@ -10,6 +10,6 @@ ehthumbs.db
 Thumbs.db
 
 # Codekit files
-config.codekit
+config.codekit*
 .codekit-cache
 examples-codekit/
