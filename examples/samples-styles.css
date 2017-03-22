@@ -9,7 +9,7 @@ each sample page.
 
 /* generic page styling */
 * { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
-body { -webkit-font-smoothing: antialiased; font-family: "Helvetica Neue", sans-serif; font-size: 100%; margin: 0 auto; max-width: 40em; padding-bottom: 3em; }
+body { -webkit-font-smoothing: antialiased; font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; font-size: 100%; margin: 0 auto; max-width: 40em; padding-bottom: 3em; }
 pre, code { background-color: rgba(0, 0, 0, 0.04); padding: 0.2em 0; margin: 0; font-size: 85%; border-radius: 3px; font-family: Consolas, Menlo, monospace; }
 pre { white-space: pre-wrap; }
 
